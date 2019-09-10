@@ -1,6 +1,10 @@
 package com.rakuten.internship.service;
 
+import com.rakuten.internship.entity.User;
+import com.rakuten.internship.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 public class UserService {
 
