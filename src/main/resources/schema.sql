@@ -1,13 +1,13 @@
 CREATE TABLE IF NOT EXISTS user(
     user_id INT(10) PRIMARY KEY AUTO_INCREMENT,
-    Name VARCHAR(100),
-    Lan INT(2),
-    Gen INT(1),
-    Cont VARCHAR(100),
-    Pic VARCHAR(100),
-    Hob VARCHAR(100),
+    Name VARCHAR(100) NOT NULL,
+    Language INT(2) NOT NULL,
+    Gender INT(1) NOT NULL,
+    Country VARCHAR(100) NOT NULL,
+    Picture VARCHAR(100),
+    Hobby VARCHAR(100),
     Self VARCHAR(300),
-    Age INT(2)
+    Age INT(2) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS gender(
