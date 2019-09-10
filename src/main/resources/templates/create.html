@@ -1,6 +1,11 @@
-<html>
-  <title>Summer Short Internship 2019</title>
-  <body>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="/fragments/base :: head">
+</head>
+
+<body>
+
+<div th:replace="/fragments/base :: navbar">
+</div>
     	<h1>
           Todo Management System
     	</h1>
@@ -32,5 +37,6 @@
         <br>
         <input type="submit" name="regiter" value="Translate">
     </form>
+  <div th:replace="/fragments/base :: footer"></div>
   </body>
 </html>

@@ -1,0 +1,18 @@
+body {
+    font-family: 'Noto Sans', sans-serif;
+    //background: #ebf2fa;
+    //background: linear-gradient(to right, #dbf1ff, #e8f6ff);
+}
+
+#overview {
+    background: #ff1b68;
+}
+
+.section-title {
+    color: #2ddf5c;
+}
+
+#overview h1 {
+    color: white;
+    font-family: 'Anton', sans-serif;
+}
