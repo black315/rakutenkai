@@ -17,8 +17,8 @@ public class User {
     @GenericGenerator(name= "my_gen", strategy= "increment")
     private Integer id;
     
-    @NotBlank(message = "Title is mandatory")
-    @Column(name = "Title")
+    @NotBlank(message = "Name is mandatory")
+    @Column(name = "Name")
     private String name;
     
     @NotBlank(message = "Languages is mandatory")
@@ -26,11 +26,20 @@ public class User {
 	@ElementCollection(targetClass=String.class)
     private List<String> languages;
     
-    @NotBlank(message = "Description is mandatory")
-     @Column(name = "Review")
-    private int review;
+    @NotBlank(message = "Rating is mandatory")
+	@Column(name = "Rating")
+    private int rating;
 
 	@OneToMany(mappedBy = "user")
 	private List<Message> messages;
+
+	private String country;
+	private String city;
+	private String username;
+	private String role;
+	private String birthdate;
+	private String gender;
+	private String pictureUrl;
+	private String selfIntroduction;
 
 }
