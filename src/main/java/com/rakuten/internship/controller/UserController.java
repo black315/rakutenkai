@@ -1,15 +1,18 @@
 package com.rakuten.internship.controller;
 
+import com.rakuten.internship.entity.User;
 import com.rakuten.internship.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 public class UserController {
-
     @Autowired
     private UserService userService;
 
@@ -20,8 +23,12 @@ public class UserController {
 
     @GetMapping("/search")
     public String search(Model model) {
-        model.addAttribute("users", userService.findUsers());
-        return "profiles";
+
+        List<User> users = userService.findUsers();
+        model.addAttribute("users", users);
+        System.out.println(users);
+        return "home";
     }
+
 }
 

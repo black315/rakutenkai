@@ -25,7 +25,7 @@ public class TodoController {
     @Autowired
     private TranslateLanguages translateLanguages;
 
-    @GetMapping("/")
+    @GetMapping("/todo")
     public String home(Model model) {
         model.addAttribute("todos", todoService.findTodos());
         return "home";
