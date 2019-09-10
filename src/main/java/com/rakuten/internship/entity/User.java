@@ -13,8 +13,7 @@ import java.util.List;
 public class User {
     
     @Id
-    @GeneratedValue(generator= "my_gen")
-    @GenericGenerator(name= "my_gen", strategy= "increment")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
     @NotBlank(message = "Name is mandatory")
