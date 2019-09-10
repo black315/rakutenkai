@@ -27,7 +27,7 @@ public class UserController {
         List<User> users = userService.findUsers();
         model.addAttribute("users", users);
         //TODO: Input the right View name
-        return "home";
+        return "output";
     }
 
 }

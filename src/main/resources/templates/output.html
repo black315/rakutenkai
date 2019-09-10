@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>Output page</title>
 </head>
@@ -10,9 +10,9 @@
         <tr th:each="user : ${users}">
             <td>picture here.</td>
             <td>
-                User name: <span th:text="${user.userName"></span><br>
-                Prefecture: <span th:text="${user.pref"></span><br>
-                Age: <span th:text="${user.age"></span><br>
+                User name: <span th:text="${user.username}"></span><br>
+                Prefecture: <span th:text="${user.city}"></span><br>
+                Age: <span th:text="${user.birthdate}"></span><br>
             </td>
         </tr>
         <!--

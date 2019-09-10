@@ -1,9 +1,0 @@
-CREATE TABLE IF NOT EXISTS gender(
-    gender_id INT(10) PRIMARY KEY AUTO_INCREMENT,
-    gender_cap VARCHAR(100)
-);
-
-CREATE TABLE IF NOT EXISTS lang(
-    lang_id INT(10) PRIMARY KEY AUTO_INCREMENT,
-    lang_cap VARCHAR(100)
-);
