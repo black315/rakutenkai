@@ -1,0 +1,96 @@
+<html>
+  <title>Sign up</title>
+  <body>
+	<h1>
+      Sign up your profile
+	</h1>
+	
+    <form method="post">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>User Name</th>
+                <td>
+                    <div>
+                        <input type="text"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>
+                    <div>
+                        <select name="foo">
+                          <option th:each="i : ${#numbers.sequence(1, 10)}" th:value="${i}" th:text="${i}">1</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>
+                    <div>
+                        <select name="example">
+                            <option value="Man">Men</option>
+                            <option value="Women">Women</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Language</th>
+                <td>
+                    <div>
+                        <select name="example">
+                            <option value="Men">Japanese</option>
+                            <option value="Women">English</option>
+                            <option value="Other">Italia</option>
+                            <option value="Men">French</option>
+                            <option value="Women">Chinese</option>
+                            <option value="Other">Korean</option>
+                            <option value="Men">Spanish</option>
+                            <option value="Women">Hindi</option>
+                            <option value="Women">Malay</option>
+                            <option value="Women">Russian</option>
+                            <option value="Other">Portuguese</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>
+                    <div>
+                        <input type="text"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Hobbys</th>
+                <td>
+                    <div>
+                        <input type="text"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Picture</th>
+                <td>
+                    <div>
+                        <input type="text"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Self introduction</th>
+                <td>
+                    <div>
+                        <input type="text"/>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+    
+  </body>
+</html>
