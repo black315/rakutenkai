@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <title>Output page</title>
+<head th:replace="/fragments/base :: head">
 </head>
+
 <body>
+
+<div th:replace="/fragments/base :: navbar">
+</div>
     <h1>Search results</h1>
     <form>
         <table>
@@ -34,5 +37,6 @@
         -->
         </table>
     </form>
+<div th:replace="/fragments/base :: footer"></div>
 </body>
 </html>
