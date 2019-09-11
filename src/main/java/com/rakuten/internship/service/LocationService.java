@@ -26,12 +26,8 @@ public class LocationService {
 	 * @return 位置フォーム
 	 */
     public LocationForm convertIpAddressToLocationForm(String ipAddress) {
-    	final String request = "http://api.ipinfodb.com/v3/ip-city/?key=" + key + "&ip=" + ipAddress;
-    	
-    	MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-    	converter.setSupportedMediaTypes(Arrays.asList(TEXT_HTML, APPLICATION_JSON));    	
+    	final String request = "http://api.ipinfodb.com/v3/ip-city/?key=" + key + "&ip=" + ipAddress;    	
     	final RestTemplate restTemplate = new RestTemplate();
-    	restTemplate.getMessageConverters().add(converter);
     	String response =  restTemplate.getForObject(request, String.class);
     	return convertResponseToForm(response);
     }
