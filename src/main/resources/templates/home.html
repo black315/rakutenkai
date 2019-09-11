@@ -4,6 +4,10 @@
     window.addEventListener('load', function() {
         document.getElementById('btn').onclick = function() {
             location.href = './search';
+            //Queryparameter de okouru
+            document.sendData.submit();
+
+
         };
     });
 </script>
@@ -22,9 +26,9 @@
 <h4>Your problem will be solved here.</h4>
 
 <!-- <table border="1" width="500" cellspacing="0" cellpadding="5" bordercolor="#333333"> -->
-<form>
+<form name="sendData">
  <tr>
-        <select name="prefecture">
+        <select id="prefecture" name="prefecture">
             <option value="北海道">北海道</option>
             <option value="青森県">青森県</option>
             <option value="岩手県">岩手県</option>
@@ -75,7 +79,7 @@
         </select>
     </tr>
     <tr>
-            <select name="prefecture">
+            <select id="city" name="city">
                 <option value="Tokyo">東京</option>
                 <option value="Sinjuku">新宿</option>
                 <option value="Sibuya">渋谷</option>
@@ -97,7 +101,7 @@
     <font size='4'>Whats problem?</font><br>
     <select id="singleSelect" name="selectedItem">
             <option value="">---</option>
-            <option th:each="tags : ${tags}" th:value="${tags.name}" th:text="${tags.name}" th:selected="${tags.name} == *{selectedItem}">singleSelect</option>
+            <option th:each="tags : ${tags}" th:value="${tags.tagId}" th:text="${tags.name}" th:selected="${tags.name} == *{selectedItem}">singleSelect</option>
     </select>
 </form>
 <br><br>
