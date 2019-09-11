@@ -10,17 +10,26 @@
 
     <script type="text/javascript" th:inline="javascript">
         /*<![CDATA[*/
-            var latitude = /*[[${users.get(0).latitude}]]*/;
-            var longitude = /*[[${users.get(0).longitude}]]*/;
+
+            var list = /*[[${users}]]*/;
+
+            var latitudes = [];
+            var longitudes = [];
+            for (var i=0; i<list.length; i++){
+                latitudes.push(list[i].latitude);
+                longitudes.push(list[i].longitude);
+            }
+
+            var latitude = (Math.max.apply(null, latitudes) + Math.min.apply(null, latitudes)) / 2;
+            var longitude = (Math.max.apply(null, longitudes) + Math.min.apply(null, longitudes)) / 2;
 
             window.onload = function(){
                 var ymap = new Y.Map("map");
                 ymap.drawMap(new Y.LatLng(latitude, longitude), 17, Y.LayerSetId.NORMAL);
                 console.log("LOADED TEST PAGE");
 
-                var list = /*[[${users}]]*/;
                 for (var i=0; i<list.length; i++){
-                    var label = new Y.Label(new Y.LatLng(list[i].latitude, list[i].longitude), "User");
+                    var label = new Y.Label(new Y.LatLng(list[i].latitude, list[i].longitude), list[i].name);
                     ymap.addFeature(label);
                 }
 
