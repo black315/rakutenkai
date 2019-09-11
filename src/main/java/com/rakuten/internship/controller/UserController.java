@@ -10,13 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @Controller
 public class UserController {
@@ -65,8 +65,14 @@ public class UserController {
         return "complete";
     }
 
-    @GetMapping("/user/{id}")
-    public String viewDetails(Model model){
+    @RequestMapping(value = "/user/{id}", method = GET)
+    public String viewDetails(Model model, @PathVariable("id") Integer id){
+        //get the ID value
+        //Lookup that user in the DB to get the object
+        //set that object to the model
+        //return the view name
+        model.addAttribute("user", userService.findUserById(id));
+        System.out.println(userService.findUserById(id));
         //TODO: Input the right View name
         return "sign_up";
     }

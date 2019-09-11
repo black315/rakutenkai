@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="/fragments/base :: head">
+</head>
+
+<body>
+
+<div th:replace="/fragments/base :: navbar">
+</div>
+<h1>Search results</h1>
+<!--    <div th:replace="/fragments/map :: body"></div>-->
+<form>
+    <table>
+        <tr th:each="user : ${users}" th:object="${user}">
+            <td>
+                <img class="img-responsive" th:src="${'https://i.pravatar.cc/150/img=' + user.id}" >
+            </td>
+            <td>
+                User name: <span th:text="*{username}"></span><br>
+                Prefecture: <span th:text="*{city}"></span><br>
+                Age: <span th:text="*{birthdate}"></span><br>
+            </td>
+            <td>
+                <!-- TODO: change window.location.href url -->
+                <button type="button" th:onclick="'window.location.href=\'/user/' +  *{id} + '\''" class="btn btn-primary">View Details</button>
+            </td>
+        </tr>
+
+        <!--
+            <tr th:each="user : ${users}">
+                <tr>
+                    <td colspan="3" rowspan="3">Picture here.</td>
+                    <td>User name</td>
+                    <td th:text="${user.userName"></td>
+                </tr>
+                <tr>
+                    <td>Country</td>
+                    <td th:text="${user.country"></td>
+                </tr>
+                <tr>
+                    <td>Age</td>
+                    <td th:text="${user.age"></td>
+                </tr>
+            </tr>
+        -->
+    </table>
+</form>
+<!--<div th:replace="/fragments/base :: footer"></div>-->
+<div th:replace="/fragments/base :: script-import"></div>
+</body>
+</html>
