@@ -39,12 +39,12 @@ public class UserController {
 
     @PostMapping("/register")
     public String register(@ModelAttribute User user, BindingResult bindingResult, ModelMap model) {
-        //if(bindingResult.hasErrors()){
-        //    return "error";
-        //}
+        if(bindingResult.hasErrors()){
+            return "error";
+        }
 
-        //userService.save(user);
-        return "sign_up";
+        userService.save(user);
+        return "complete";
     }
 
 }
