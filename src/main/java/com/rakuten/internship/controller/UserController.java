@@ -23,8 +23,8 @@ public class UserController {
 
     @GetMapping("/search")
     public String search(Model model) {
-
-        List<User> users = userService.findUsers("Osaka");
+        
+        List<User> users = userService.findUsers_fromCity("Osaka");
         model.addAttribute("users", users);
         //TODO: Input the right View name
         return "output";

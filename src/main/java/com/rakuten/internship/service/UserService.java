@@ -15,7 +15,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<User> findUsers(String search_city) {
+    public List<User> findUsers_fromCity(String search_city) {
         return (userRepository.findByCity(search_city));
     }
 }
