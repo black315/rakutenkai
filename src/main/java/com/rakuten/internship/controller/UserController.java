@@ -5,6 +5,8 @@ import com.rakuten.internship.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,6 +30,16 @@ public class UserController {
         model.addAttribute("users", users);
         //TODO: Input the right View name
         return "output";
+    }
+
+    @PostMapping("/register")
+    public String register(@ModelAttribute User user, BindingResult bindingResult, ModelMap model) {
+        if(bindingResult.hasErrors()){
+            return "error";
+        }
+
+        userService.save(user);
+        return "complete";
     }
 
 }
