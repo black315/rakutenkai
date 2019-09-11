@@ -3,9 +3,22 @@
 <script type="text/javascript">
     window.addEventListener('load', function() {
         document.getElementById('btn').onclick = function() {
-            location.href = './search';
+            let query = '/search?';
+
+            let cityElmn = document.getElementById('city');
+            let selectedCity = cityElmn.options[cityElmn.selectedIndex].value
+            console.log(selectedCity);
+
+            let tagElm = document.getElementById('singleSelect');
+            let selectedTag = tagElm.options[tagElm.selectedIndex].value;
+            console.log(selectedTag);
+
+            query = query + 'city=\"' + selectedCity + '\"&tag=' + selectedTag;
+            console.log(query)
+
+            location.href = query;
             //Queryparameter de okouru
-            document.sendData.submit();
+            // document.sendData.submit();
 
 
         };
