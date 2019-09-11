@@ -6,7 +6,6 @@
             location.href = './search';
         };
     });
-
 </script>
 
 <head th:replace="/fragments/base :: head">
@@ -23,8 +22,8 @@
 <h4>Your problem will be solved here.</h4>
 
 <!-- <table border="1" width="500" cellspacing="0" cellpadding="5" bordercolor="#333333"> -->
-<form method="post" action="/Controller/UserController" th:object="${tag}">
-    <tr>
+<form>
+ <tr>
         <select name="prefecture">
             <option value="北海道">北海道</option>
             <option value="青森県">青森県</option>
@@ -94,16 +93,15 @@
                 <option value="Hokkaido">北海道</option>
             </select>
         </tr>
+    <br><br>
+    <font size='4'>Whats problem?</font><br>
     <select id="singleSelect" name="selectedItem">
             <option value="">---</option>
-            <option th:each="item : ${tags}" th:value="${item.name}" th:text="${item.name}" th:selected="${item.name} == *{selectedItem}">singleSelect</option>
+            <option th:each="tags : ${tags}" th:value="${tags.name}" th:text="${tags.name}" th:selected="${tags.name} == *{selectedItem}">singleSelect</option>
     </select>
 </form>
 <br><br>
-<font size='4'>Whats problem?</font><br>
-<tr>
-    <input type="text" size=40 name="problem"><br>
-</tr>
+
 
 
 <!-- <tr th:each="todo:${todos}">
