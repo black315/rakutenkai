@@ -39,7 +39,7 @@ public class UserController {
         }
 
         userService.save(user);
-        return "complete";
+        return "sign_up";
     }
 
 }
