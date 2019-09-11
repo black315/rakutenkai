@@ -66,8 +66,9 @@ public class UserController {
     }
 
     @GetMapping("/user/{id}")
-    public String viewDetails(){
-
+    public String viewDetails(Model model){
+        //TODO: Input the right View name
+        return "sign_up";
     }
 }
 
