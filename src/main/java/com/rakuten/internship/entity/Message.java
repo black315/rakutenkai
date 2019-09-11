@@ -1,20 +1,21 @@
 package com.rakuten.internship.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
-
-import java.util.List;
 
 @Entity
 @Data
 public class Message {
     
     @Id
-    @GeneratedValue(generator= "my_gen")
-    @GenericGenerator(name= "my_gen", strategy= "increment")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
 	@NotBlank
