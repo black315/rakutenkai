@@ -45,7 +45,7 @@ public class UserController {
         }
 
         userService.save(user);
-        return "sign_up";
+        return "complete";
     }
 }
 
