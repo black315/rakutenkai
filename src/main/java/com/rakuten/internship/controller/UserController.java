@@ -26,7 +26,7 @@ public class UserController {
     
     @GetMapping("/")
     public String home(Model model, HttpServletRequest request){
-    	String ipAddress = request.getRemoteAddr();
+    	String ipAddress = request.getHeader("X-Forwarded-For");
     	LocationForm locationForm = locationService.convertIpAddressToLocationForm(ipAddress);
     	model.addAttribute("city", locationForm.getCity());
         return "home";
