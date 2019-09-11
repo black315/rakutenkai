@@ -13,14 +13,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class UserController {
 	
     @Autowired
+    private LocationService locationService;
+
+    @Autowired
     private UserService userService;
     
     @GetMapping("/")
-    public String home(Model model){
+    public String home(Model model, HttpServletRequest request){
+    	String ipAddress = request.getRemoteAddr();
+    	LocationForm locationForm = locationService.convertIpAddressToLocationForm(ipAddress);
+    	model.addAttribute("city", locationForm.getCity());
         return "home";
     }
 
