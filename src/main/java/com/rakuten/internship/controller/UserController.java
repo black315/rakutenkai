@@ -8,6 +8,8 @@ import com.rakuten.internship.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
@@ -45,4 +47,20 @@ public class UserController {
         return "output";
     }
 
+    @GetMapping("/register")
+    public String getRegister(Model model) {
+        model.addAttribute("user", new User());
+        return "sign_up";
+    }
+
+    @PostMapping("/register")
+    public String register(@ModelAttribute User user, BindingResult bindingResult, ModelMap model) {
+        if(bindingResult.hasErrors()){
+            return "error";
+        }
+
+        userService.save(user);
+        return "complete";
+    }
 }
+
