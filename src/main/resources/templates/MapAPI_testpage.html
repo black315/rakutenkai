@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
-<head th:replace="/fragments/base :: head">
 
+<head th:replace="/fragments/base :: head">
 </head>
 
 <script type="text/javascript" charset="utf-8" src="https://map.yahooapis.jp/js/V1/jsapi?appid=dj00aiZpPW9VQTdERlNES1JmcyZzPWNvbnN1bWVyc2VjcmV0Jng9ZGU-">
@@ -10,8 +10,8 @@
 <script type="text/javascript" th:inline="javascript">
     console.log('TEST');
         /*<![CDATA[*/
-            var latitude = /*[[${users.user.latitude}]]*/ 35.66572;
-            var longitude = /*[[${users.user.longitude}]]*/ 139.73100;
+            var latitude = /*[[${users.get(0).latitude}]]*/ 35.66572;
+            var longitude = /*[[${users.get(0).longitude}]]*/ 139.73100;
 
             window.onload = function(){
                 var ymap = new Y.Map("map");
@@ -20,7 +20,7 @@
             }
 
         /*]]>*/
-    </script>
+</script>
 
 <body>
 
