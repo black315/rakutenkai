@@ -23,5 +23,7 @@ public class UserService {
 
     public List<User> findUsersByTag(Tag tag) {
         return userRepository.findByTags(Arrays.asList(tag));
+    public User save(User user){
+        return userRepository.save(user);
     }
 }
