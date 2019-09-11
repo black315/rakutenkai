@@ -50,4 +50,7 @@ public class User {
 	private String pictureUrl;
 	private String selfIntroduction;
 
+	private float longitude;
+	private float latitude;
+
 }
