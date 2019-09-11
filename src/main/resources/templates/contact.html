@@ -1,0 +1,35 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="/fragments/base :: head">
+</head>
+
+<body>
+
+<div th:replace="/fragments/base :: navbar">
+</div>
+
+<table style="table-layout: fixed; width: 100%;">
+  <tr th:each="message : ${messages}">
+    <th:block th:if="${message.user.id == id}">
+      <td align="left">
+        <div th:text="${message.user.name}"></div>
+        <div th:text="${message.content}"></div>
+      </td>
+    </th:block>
+    <th:block th:unless="${message.user.id == id}">
+      <td align="left">
+        <div th:text="${message.user.name}"></div>
+        <div th:text="${message.content}"></div>
+      </td>
+    </th:block>
+  </tr>
+</table>
+
+<form class="send-form" th:action="@{/message/send}" th:object="${sendForm}" method="post">
+  <input type="text" name="content" class="float-left">
+  <button id="btn" class="btn btn-primary" value="Send"></button>
+</form>
+
+<div th:replace="/fragments/base :: footer"></div>
+</body>
+</html>
