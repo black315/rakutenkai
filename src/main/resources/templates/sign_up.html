@@ -11,23 +11,21 @@
     Sign up your profile
 </h1>
 
-<form method="post">
+<form th:action="@{/register}" th:object="${user}" method="post">
     <table class="table table-bordered table-hover">
         <tr>
-            <th>User Name</th>
+            <th>Name</th>
             <td>
                 <div>
-                    <input type="text"/>
+                    <input type="text" th:field="*{name}">
                 </div>
             </td>
         </tr>
         <tr>
-            <th>Age</th>
+            <th>Date of Birth</th>
             <td>
                 <div>
-                    <select name="foo">
-                        <option th:each="i : ${#numbers.sequence(1, 10)}" th:value="${i}" th:text="${i}">1</option>
-                    </select>
+                    <input type="date" th:field="*{birthdate}" placeholder="YYYY/MM/DD"/>
                 </div>
             </td>
         </tr>
@@ -44,7 +42,7 @@
             </td>
         </tr>
         <tr>
-            <th>Language</th>
+            <th>Languages</th>
             <td>
                 <div>
                     <select name="example">
@@ -72,7 +70,7 @@
             </td>
         </tr>
         <tr>
-            <th>Hobbys</th>
+            <th>Hobbies</th>
             <td>
                 <div>
                     <input type="text"/>

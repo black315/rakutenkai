@@ -34,6 +34,7 @@ public class UserController {
 
     @GetMapping("/register")
     public String getRegister(Model model) {
+        model.addAttribute("user", new User());
         return "sign_up";
     }
 
@@ -46,6 +47,5 @@ public class UserController {
         userService.save(user);
         return "sign_up";
     }
-
 }
 
