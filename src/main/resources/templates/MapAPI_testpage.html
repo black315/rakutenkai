@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:replace="/fragments/base :: head">
-    <script type="text/javascript" charset="utf-8" src="https://map.yahooapis.jp/js/V1/jsapi?appid=dj00aiZpPW9VQTdERlNES1JmcyZzPWNvbnN1bWVyc2VjcmV0Jng9ZGU-">
-    </script>
 
-    <script type="text/javascript" th:inline="javascript">
+</head>
+
+<script type="text/javascript" charset="utf-8" src="https://map.yahooapis.jp/js/V1/jsapi?appid=dj00aiZpPW9VQTdERlNES1JmcyZzPWNvbnN1bWVyc2VjcmV0Jng9ZGU-">
+</script>
+
+<script type="text/javascript" th:inline="javascript">
+    console.log('TEST');
         /*<![CDATA[*/
             var latitude = /*[[${users.user.latitude}]]*/ 35.66572;
             var longitude = /*[[${users.user.longitude}]]*/ 139.73100;
@@ -12,16 +16,11 @@
             window.onload = function(){
                 var ymap = new Y.Map("map");
                 ymap.drawMap(new Y.LatLng(latitude, longitude), 6, Y.LayerSetId.NORMAL);
-
-                [#th:block th:each="user:${users}"]
-                    var label = new Y.Label(new Y.LatLng(user.locationform.latitude, user.locationform.longitude), "User");
-                    ymap.addFeature(label);
-                [/th:block]
+                console.log("LOADED TEST PAGE");
             }
 
         /*]]>*/
-</script>
-</head>
+    </script>
 
 <body>
 
