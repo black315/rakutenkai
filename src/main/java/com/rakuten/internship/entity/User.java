@@ -22,12 +22,12 @@ public class User {
     @Column(name = "Name")
     private String name;
     
-    @NotBlank(message = "Languages is mandatory")
+    //@NotBlank(message = "Languages is mandatory")
 	@Column(name = "Languages")
 	@ElementCollection(targetClass=String.class)
     private List<String> languages;
     
-    @NotBlank(message = "Rating is mandatory")
+    //@NotBlank(message = "Rating is mandatory")
 	@Column(name = "Rating")
     private int rating;
 

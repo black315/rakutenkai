@@ -80,20 +80,12 @@
     <input type="text" size=40 name="problem"><br>
 </tr>
 
-
-<!-- <tr th:each="todo:${todos}">
-    <td th:text="${todo.number}"></td>
-    <td th:text="${todo.text}"></td>
-    <td>
-        <span th:text="${todo.sourceLanguage}" />
-        ->
-        <span th:text="${todo.targetLanguage}" /></td>
-    <td th:text="${todo.translatedText}"></td> -->
 </tr>
 <!-- </table> -->
 <br>
 <button id="btn" class="btn btn-primary" value="Click">search!</button>
 
-<div th:replace="/fragments/base :: footer"></div>
+<!--<div th:replace="/fragments/base :: footer"></div>-->
+<div th:replace="/fragments/base :: script-import"></div>
 </body>
 </html>
