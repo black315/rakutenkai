@@ -5,6 +5,7 @@ import lombok.Data;
 /**
  * 位置フォーム
  */
+// TODO: put the Entity annotation
 @Data
 public class ContactForm {
     
