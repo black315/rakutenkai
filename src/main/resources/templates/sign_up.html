@@ -15,10 +15,18 @@
 <form th:action="@{/register}" th:object="${user}" method="post">
     <table class="table table-bordered table-hover">
         <tr>
-            <th>Name</th>
+            <th>Full Name</th>
             <td>
                 <div>
-                    <input type="text" th:field="*{name}">
+                    <input type="text" th:field="*{name}"/>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Username</th>
+            <td>
+                <div>
+                    <input type="text" th:field="*{username}"/>
                 </div>
             </td>
         </tr>
@@ -34,7 +42,7 @@
             <th>Gender</th>
             <td>
                 <div>
-                    <select name="example">
+                    <select name="example" th:field="*{gender}">
                         <option value="Man">Men</option>
                         <option value="Woman">Women</option>
                         <option value="Other">Other</option>
@@ -43,21 +51,21 @@
             </td>
         </tr>
         <tr>
-            <th>Languages</th>
+            <th>Main Language</th>
             <td>
                 <div>
-                    <select name="example">
-                        <option value="Men">Japanese</option>
-                        <option value="Women">English</option>
-                        <option value="Other">Italia</option>
-                        <option value="Men">French</option>
-                        <option value="Women">Chinese</option>
-                        <option value="Other">Korean</option>
-                        <option value="Men">Spanish</option>
-                        <option value="Women">Hindi</option>
-                        <option value="Women">Malay</option>
-                        <option value="Women">Russian</option>
-                        <option value="Other">Portuguese</option>
+                    <select name="example" th:field="*{languages}">
+                        <option value="Japanese">Japanese</option>
+                        <option value="English">English</option>
+                        <option value="Italia">Italia</option>
+                        <option value="French">French</option>
+                        <option value="Chinese">Chinese</option>
+                        <option value="Korean">Korean</option>
+                        <option value="Spanish">Spanish</option>
+                        <option value="Hindi">Hindi</option>
+                        <option value="Malay">Malay</option>
+                        <option value="Russian">Russian</option>
+                        <option value="Portugese">Portuguese</option>
                     </select>
                 </div>
             </td>
@@ -66,23 +74,21 @@
             <th>Country</th>
             <td>
                 <div>
-                    <input type="text"/>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <th>Hobbies</th>
-            <td>
-                <div>
-                    <input type="text"/>
+                    <input type="text" th:field="*{country}"/>
                 </div>
             </td>
         </tr>
         <tr>
             <th>Picture</th>
             <td>
-                <div>
-                    <input type="text"/>
+                <div class="input-group">
+                    <label class="input-group-btn">
+                        <div class="btn btn-primary">
+                            Choose File
+                            <input type="file" style="display:none"/>
+                        </div>
+                    </label>
+                    <input type="text" />
                 </div>
             </td>
         </tr>
@@ -90,7 +96,7 @@
             <th>Self introduction</th>
             <td>
                 <div>
-                    <input type="text"/>
+                    <input type="text" th:field="*{selfIntroduction}"/>
                 </div>
             </td>
         </tr>
