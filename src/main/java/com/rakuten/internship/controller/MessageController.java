@@ -3,29 +3,30 @@ package com.rakuten.internship.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.rakuten.internship.entity.ContactForm;
+import com.rakuten.internship.entity.Message;
+import com.rakuten.internship.repository.MessageRepository;
 
 @Controller
 @RequestMapping("/message")
 public class MessageController {
 	
-//	@Autowired
-//	MessageService messageService;
-	
-//	@Autowired
-//	MessageRepository messageRepositoy;
+	@Autowired
+	MessageRepository messageRepositoy;
 	
     @GetMapping("/contact")
-    public String contact(Model model){
-    	// TODO Implement these below
-//    	List<Message> messages = messageRepositoy.findByRoomIdAndUserIdsAndDeletedFalse();
-//    	List<MessageForm> messageForms = MessageService.convertEntitiesToForms(messages);
-    	List<String> messageForms = Arrays.asList("message1", "message2", "message3");
-    	model.addAttribute("id", 1);
-    	model.addAttribute("messages", messageForms);
+    public String contact(@ModelAttribute ContactForm contactForm, Model model){
+    	List<Long> userIds = Arrays.asList(contactForm.getIdFrom(), contactForm.getIdTo());
+    	List<Message> messages = messageRepositoy.findByRoomIdAndUserIds(contactForm.getRoomId(), userIds);
+    	model.addAttribute("id", contactForm.getIdFrom());
+    	model.addAttribute("messages", messages);
     	return "contact";
     }
 

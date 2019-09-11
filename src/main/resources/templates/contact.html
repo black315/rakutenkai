@@ -11,7 +11,7 @@
 <table style="table-layout: fixed; width: 100%;">
   <tr th:each="message : ${messages}">
     <th:block th:if="${message.user.id == id}">
-      <td align="left">
+      <td align="right">
         <div th:text="${message.user.name}"></div>
         <div th:text="${message.content}"></div>
       </td>
@@ -27,7 +27,7 @@
 
 <form class="send-form" th:action="@{/message/send}" th:object="${sendForm}" method="post">
   <input type="text" name="content" class="float-left">
-  <button id="btn" class="btn btn-primary" value="Send"></button>
+  <button id="btn" class="btn btn-primary">Send</button>
 </form>
 
 <div th:replace="/fragments/base :: footer"></div>
