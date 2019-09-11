@@ -3,10 +3,12 @@ package com.rakuten.internship.entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -31,6 +33,13 @@ public class User {
 
 	@OneToMany(mappedBy = "user")
 	private List<Message> messages;
+
+	@ManyToMany
+//	@JoinTable(
+//			name = "handle_tags",
+	//			joinColumns = @JoinColumn(name = "id"),
+//			inverseJoinColumns = @JoinColumn(name = "tagId"))
+	private List<Tag> tags;
 
 	private String country;
 	private String city;

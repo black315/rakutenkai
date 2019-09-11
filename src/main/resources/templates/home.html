@@ -6,7 +6,6 @@
             location.href = './search';
         };
     });
-
 </script>
 
 <head th:replace="/fragments/base :: head">
@@ -21,6 +20,7 @@
     楽天介
 </h1>
 <h4>Your problem will be solved here.</h4>
+<div th:text="|You are in ${city}|"></div>
 
 <!-- <table border="1" width="500" cellspacing="0" cellpadding="5" bordercolor="#333333"> -->
 <tr>
