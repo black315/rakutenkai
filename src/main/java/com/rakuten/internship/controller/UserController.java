@@ -27,7 +27,9 @@ public class UserController {
     @GetMapping("/search")
     public String search(Model model) {
         
-        List<User> users = userService.findUsers_fromCity("Osaka");
+        List<User> users = userService.findUsersByTag(tagService.findByName("Medical support"));
+//        List<User> users = userService.findUsersFromCity("Osaka");
+        System.out.println(users);
         model.addAttribute("users", users);
         //TODO: Input the right View name
         return "output";
