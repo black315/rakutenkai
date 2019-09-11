@@ -32,6 +32,11 @@ public class UserController {
         return "output";
     }
 
+    @GetMapping("/register")
+    public String getRegister(Model model) {
+        return "sign_up";
+    }
+
     @PostMapping("/register")
     public String register(@ModelAttribute User user, BindingResult bindingResult, ModelMap model) {
         if(bindingResult.hasErrors()){

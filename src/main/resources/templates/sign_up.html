@@ -1,99 +1,105 @@
-<html>
-  <title>Sign up</title>
-  <body>
-	<h1>
-      Sign up your profile
-	</h1>
-	
-    <form method="post">
-        <table class="table table-bordered table-hover">
-            <tr>
-                <th>User Name</th>
-                <td>
-                    <div>
-                        <input type="text"/>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th>Age</th>
-                <td>
-                    <div>
-                        <select name="foo">
-                          <option th:each="i : ${#numbers.sequence(1, 10)}" th:value="${i}" th:text="${i}">1</option>
-                        </select>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th>Gender</th>
-                <td>
-                    <div>
-                        <select name="example">
-                            <option value="Man">Men</option>
-                            <option value="Woman">Women</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th>Language</th>
-                <td>
-                    <div>
-                        <select name="example">
-                            <option value="Men">Japanese</option>
-                            <option value="Women">English</option>
-                            <option value="Other">Italia</option>
-                            <option value="Men">French</option>
-                            <option value="Women">Chinese</option>
-                            <option value="Other">Korean</option>
-                            <option value="Men">Spanish</option>
-                            <option value="Women">Hindi</option>
-                            <option value="Women">Malay</option>
-                            <option value="Women">Russian</option>
-                            <option value="Other">Portuguese</option>
-                        </select>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th>Country</th>
-                <td>
-                    <div>
-                        <input type="text"/>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th>Hobbys</th>
-                <td>
-                    <div>
-                        <input type="text"/>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th>Picture</th>
-                <td>
-                    <div>
-                        <input type="text"/>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th>Self introduction</th>
-                <td>
-                    <div>
-                        <input type="text"/>
-                    </div>
-                </td>
-            </tr>
-        </table>
-    </form>
-    
-    <button type="submit">Sign up</button>
-    <button type="submit">Cancel</button>
-    
-  </body>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="/fragments/base :: head">
+</head>
+
+<body>
+
+<div th:replace="/fragments/base :: navbar">
+</div>
+<h1>
+    Sign up your profile
+</h1>
+
+<form method="post">
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>User Name</th>
+            <td>
+                <div>
+                    <input type="text"/>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Age</th>
+            <td>
+                <div>
+                    <select name="foo">
+                        <option th:each="i : ${#numbers.sequence(1, 10)}" th:value="${i}" th:text="${i}">1</option>
+                    </select>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Gender</th>
+            <td>
+                <div>
+                    <select name="example">
+                        <option value="Man">Men</option>
+                        <option value="Woman">Women</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Language</th>
+            <td>
+                <div>
+                    <select name="example">
+                        <option value="Men">Japanese</option>
+                        <option value="Women">English</option>
+                        <option value="Other">Italia</option>
+                        <option value="Men">French</option>
+                        <option value="Women">Chinese</option>
+                        <option value="Other">Korean</option>
+                        <option value="Men">Spanish</option>
+                        <option value="Women">Hindi</option>
+                        <option value="Women">Malay</option>
+                        <option value="Women">Russian</option>
+                        <option value="Other">Portuguese</option>
+                    </select>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Country</th>
+            <td>
+                <div>
+                    <input type="text"/>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Hobbys</th>
+            <td>
+                <div>
+                    <input type="text"/>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Picture</th>
+            <td>
+                <div>
+                    <input type="text"/>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Self introduction</th>
+            <td>
+                <div>
+                    <input type="text"/>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <button type="submit" class="btn btn-primary">Sign up</button>
+    <button>Cancel</button>
+</form>
+
+<div th:replace="/fragments/base :: footer"></div>
+</body>
 </html>
