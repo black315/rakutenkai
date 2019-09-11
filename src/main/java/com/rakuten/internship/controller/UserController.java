@@ -64,5 +64,10 @@ public class UserController {
         userService.save(user);
         return "complete";
     }
+
+    @GetMapping("/user/{id}")
+    public String viewDetails(){
+
+    }
 }
 
