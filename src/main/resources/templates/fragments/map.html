@@ -10,17 +10,22 @@
 
     <script type="text/javascript" th:inline="javascript">
         /*<![CDATA[*/
-            var latitude = /*[[${users.user.latitude}]]*/ 35.66572;
-            var longitude = /*[[${users.user.longitude}]]*/ 139.73100;
+            var latitude = /*[[${users.get(0).latitude}]]*/;
+            var longitude = /*[[${users.get(0).longitude}]]*/;
 
             window.onload = function(){
                 var ymap = new Y.Map("map");
-                ymap.drawMap(new Y.LatLng(latitude, longitude), 6, Y.LayerSetId.NORMAL);
+                ymap.drawMap(new Y.LatLng(latitude, longitude), 17, Y.LayerSetId.NORMAL);
+                console.log("LOADED TEST PAGE");
 
-                [#th:block th:each="user:${users}"]
-                    var label = new Y.Label(new Y.LatLng(user.locationform.latitude, user.locationform.longitude), "User");
+                var list = /*[[${users}]]*/;
+                for (var i=0; i<list.length; i++){
+                    var label = new Y.Label(new Y.LatLng(list[i].latitude, list[i].longitude), "User");
                     ymap.addFeature(label);
-                [/th:block]
+                }
+
+                var control = new Y.SliderZoomControlVertical();
+                ymap.addControl(control);
             }
 
         /*]]>*/
