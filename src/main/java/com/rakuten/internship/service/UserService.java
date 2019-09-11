@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -25,7 +26,12 @@ public class UserService {
         return userRepository.findByTags(Arrays.asList(tag));
     }
 
-    public User save(User user) {
+    public User findUserById(Integer id) {
+        Optional<User> u = userRepository.findById(id);
+        return u.orElse(null);
+    }
+
+    public User save(User user){
         return userRepository.save(user);
     }
 }
