@@ -17,16 +17,32 @@
                 <img class="img-responsive" th:src="${'https://i.pravatar.cc/300/img=' + user.id}" >
             </td>
             <td>
-                Username: <span th:text="*{username}"></span><br>
+                Name: <span th:text="*{username}"></span><br>
+                Gender: <span th:text="*{gender}"></span><br>
+                Age: <span th:text="*{getAge()}"></span><br>
+                Country: <span th:text="*{country}"></span><br>
                 Prefecture: <span th:text="*{city}"></span><br>
-                Age: <span th:text="*{birthdate}"></span><br>
+                Self introduction: <span th:text="*{selfIntroduction}"></span><br>
             </td>
+
 
         </tr>
         <tr>
             <td>
-                <div><button type="button" th:onclick="'location.href= \' /search \''" class="btn btn-primary btn-lg">Contact</button></div>
-                <div><button type="button" th:onclick="'location.href= \' /message \''" class="btn-outline-primary btn-lg">Back</button></div>
+                <div class="profile-userbuttons">
+                    <button type="button" class="btn btn-primary btn-lg">Contact</button>
+                    <button type="button" class="btn btn-outline-primary btn-lg">Back</button>
+                </div>
+                <!--
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div> <button type="button" th:onclick="'location.href= \' /search \''" class="btn btn-primary btn-lg">Contact</button> </div>
+                </div>
+                    <div class="col-xs-6">
+                        <div> <button type="button" th:onclick="'location.href= \' /message \''" class="btn-outline-primary btn-lg">Back</button> </div>
+                    </div>
+                </div>
+                -->
             </td>
         </tr>
 
