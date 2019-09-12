@@ -1,5 +1,6 @@
 package com.rakuten.internship.controller;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -31,8 +32,11 @@ public class MessageController {
     }
 
     @GetMapping("/send")
-    public String send(Model model) {
-        return "send";
+    public String send(@ModelAttribute Message message, Model model) {
+        LocalDateTime now = LocalDateTime.now();
+        message.setTimestamp(now);
+        messageRepositoy.save(message);
+        return "redirect:/message/contact";
     }
 
 }

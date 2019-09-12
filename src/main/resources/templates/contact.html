@@ -25,8 +25,10 @@
   </tr>
 </table>
 
-<form class="send-form" th:action="@{/message/send}" th:object="${sendForm}" method="post">
+<form class="send-form" th:action="@{/message/send}" th:object="${message}" method="post">
   <input type="text" name="content" class="float-left">
+  <input type="hidden" name="user" th:text="${message[0].user.id == id ? id : message[0].userTo.id}">
+  <input type="hidden" name="userTo" th:text="${message[0].user.id == id ? message[0].userTo.id : id}">
   <button id="btn" class="btn btn-primary">Send</button>
 </form>
 
