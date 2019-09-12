@@ -33,5 +33,7 @@ public class Message {
 	@NotBlank
 	private String timestamp;
 
+	@Column(name = "private_message")
+	private boolean privateMessage;
 
 }
