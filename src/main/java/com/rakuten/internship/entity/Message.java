@@ -20,10 +20,8 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-	@NotBlank
 	private Long room_id;
     
-    @NotBlank(message = "User is mandatory")
 //    @JoinColumn(name = "User_id")
 	@ManyToOne
 	private User user;
@@ -31,7 +29,6 @@ public class Message {
     @ManyToOne
     private User userTo;
 
-	@NotBlank(message = "Description is mandatory")
 	@Column(name = "Content")
 	private String content;
 

@@ -15,7 +15,7 @@
     <tr th:each="message : ${messages}">
       <th:block th:if="${message.user.id == id}">
         <td align="right">
-          <img class="img-responsive" th:src="${'https://i.pravatar.cc/150/img=' + message.user.id}" >
+          <img class="img-responsive" th:src="${'https://i.pravatar.cc/150/img=' + message.user.id}" style="width: 150px; height: 150px;" >
           <div th:text="${message.user.name}"></div>
           <div th:text="${message.content}"></div>
           <div th:text="${#temporals.format(message.timestamp, 'HH:mm')}"></div>
@@ -23,7 +23,7 @@
       </th:block>
       <th:block th:unless="${message.user.id == id}">
         <td align="left">
-          <img class="img-responsive" th:src="${'https://i.pravatar.cc/150/img=' + message.user.id}" >
+          <img class="img-responsive" th:src="${'https://i.pravatar.cc/150/img=' + message.user.id}" style="width: 150px; height: 150px;" >
           <div th:text="${message.user.name}"></div>
           <div th:text="${message.content}"></div>
           <div th:text="${#temporals.format(message.timestamp, 'HH:mm')}"></div>
@@ -35,8 +35,8 @@
 
 <form class="send-form" th:action="@{/message/send}" th:object="${message}" method="post">
   <input type="text" name="content" class="float-left">
-  <input type="hidden" name="user" th:text="${message[0].user.id == id ? id : message[0].userTo.id}">
-  <input type="hidden" name="userTo" th:text="${message[0].user.id == id ? message[0].userTo.id : id}">
+  <input type="hidden" name="user" th:value="${messages[0].user.id == id ? messages[0].user.id : messages[0].userTo.id}">
+  <input type="hidden" name="userTo" th:value="${messages[0].user.id == id ? messages[0].userTo.id : messages[0].user.id}">
   <button id="btn" class="btn btn-primary">Send</button>
 </form>
 
@@ -44,12 +44,12 @@
 
 <div th:replace="/fragments/base :: script-import"></div>
 
-</body>
-
 <script type="text/javascript" th:inline="javascript">
-  $(window).on("load", function() {
-    $("#scrollTable").scrollTop($("#scrollTable").height());
-  });
+  var $scrollTable = $("#scrollTable");
+  var scrollTo = $scrollTable.get(0).scrollHeight - $scrollTable.height();
+  $(window).on("load", function() { $("#scrollTable").scrollTop(scrollTo); });
 </script>
+
+</body>
 
 </html>
