@@ -22,7 +22,7 @@ INSERT INTO TAG (NAME) VALUES
 ('Medical support'),
 ('Transportation'),
 ('Pension'),
-('National Insurrance'),
+('National Insurance'),
 ('Translation'),
 ('Accomodation'),
 ('Ward office'),
@@ -54,6 +54,12 @@ INSERT INTO USER_TAGS (USER_ID, TAGS_TAG_ID) VALUES
 
 INSERT INTO APPOINTMENT (REQUESTER_ID, REQUESTED_ID, DATE, CITY, PLACE, DETAILS, TAG_TAG_ID) VALUES
 (1, 4, '2019/10/02', 'Osaka', 'Umeda station' , 'Please help me with some paperwork at the post office!', 5);
+(2, 3, '2019/07/04', 'Tokyo', 'Tokyo station' , 'Does anyone have which clinic has doctor who speaks English?', 1);
+(2, 4, '2019/09/01', 'Tokyo', 'Shibuya station' , 'How can I get to Disney sea by bus?', 2);
+(1, 3, '2019/05/02', 'Hyogo', 'Akashi station' , 'Do I have to pay pension if I am a student?', 3);
+(3, 4, '2019/06/04', 'Hokkaido', 'Sapporo station' , 'Why do I need to pay insurance?', 4);
+(4, 5, '2018/10/02', 'Kyoto', 'Kawaramachi station' , 'Is ABC hotel really near to station?', 6);
+(1, 5, '2019/10/10', 'Toyama', 'Kanazawa station' , 'How can I get to Raichosawa camping site from toyama kanazawa station?', 10);
 
 INSERT INTO MESSAGE (USER_ID, USER_TO_ID, CONTENT, TIMESTAMP, PRIVATE_MESSAGE) VALUES
  (1, 2, 'Hello', '2019-09-12 10:03:46', false),

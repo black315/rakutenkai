@@ -13,7 +13,7 @@
 <div id="scrollTable" style="height: 500px; overflow-y: scroll;">
   <table style="table-layout: fixed; width: 100%;">
     <tr th:each="message : ${messages}">
-      <th:block th:if="${message.user.id == id}">
+      <th:block th:if="${message.user.id == idFrom}">
         <td align="right">
           <img class="img-responsive" th:src="${'https://i.pravatar.cc/150/img=' + message.user.id}" style="width: 150px; height: 150px;" >
           <div th:text="${message.user.name}"></div>
@@ -21,7 +21,7 @@
           <div th:text="${#temporals.format(message.timestamp, 'HH:mm')}"></div>
         </td>
       </th:block>
-      <th:block th:unless="${message.user.id == id}">
+      <th:block th:unless="${message.user.id == idFrom}">
         <td align="left">
           <img class="img-responsive" th:src="${'https://i.pravatar.cc/150/img=' + message.user.id}" style="width: 150px; height: 150px;" >
           <div th:text="${message.user.name}"></div>
@@ -35,8 +35,8 @@
 
 <form class="send-form" th:action="@{/message/send}" th:object="${message}" method="post">
   <input id="newMessage" type="text" name="content" class="float-left" maxlength="100">
-  <input type="hidden" name="user" th:value="${messages[0].user.id == id ? messages[0].user.id : messages[0].userTo.id}">
-  <input type="hidden" name="userTo" th:value="${messages[0].user.id == id ? messages[0].userTo.id : messages[0].user.id}">
+  <input type="hidden" name="user" th:value="${idFrom}">
+  <input type="hidden" name="userTo" th:value="${idTo}">
   <button id="btn" class="btn btn-primary" disabled="true">Send</button>
 </form>
 
