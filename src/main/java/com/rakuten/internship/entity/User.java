@@ -22,7 +22,7 @@ public class User {
     @Column(name = "Name")
     private String name;
     
-    @NotBlank(message = "Languages is mandatory")
+    //@NotBlank(message = "Languages is mandatory")
 	@Column(name = "Languages")
 	@ElementCollection(targetClass=String.class)
     private List<String> languages;
