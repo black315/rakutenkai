@@ -32,9 +32,6 @@ public class User {
 	@Column(name = "Rating")
     private int rating;
 
-	@OneToMany(mappedBy = "user")
-	private List<Message> messages;
-
 	@ManyToMany
 //	@JoinTable(
 //			name = "handle_tags",

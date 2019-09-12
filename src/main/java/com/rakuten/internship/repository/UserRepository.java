@@ -10,5 +10,6 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
     List<User> findByCity(String city);
+    List<User> findByUsername(String username);
     List<User> findByTags(List<Tag> tags);
 }
