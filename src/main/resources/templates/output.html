@@ -7,36 +7,38 @@
 
 <div th:replace="/fragments/base :: navbar">
 </div>
-
+<div id="main-content">
     <h1>Search results</h1>
 
     <form>
         <table>
+            <tr th:each="user : ${users}" th:object="${user}">
+                <td>
+                    <img class="img-responsive" th:src="${'https://i.pravatar.cc/150/img=' + user.id}">
+                </td>
+                <td>
+                    Name: <span th:text="*{name}"></span><br>
+                    Location: <span th:text="*{country} + ' - ' + *{city}"></span><br>
+                    Age: <span th:text="${user.getAge()}"></span><br>
+                    <!--                Can help with: <span th:each=" tag, tStat : *{tags}" th:text="${tag.name} + ' '" ></span><br>-->
+                    <!--                Can help with: <span th:each=" tag, tStat : *{tags}" th:text="${tStat.index == 2}? 'and more' : ${tag.name} + ', '" th:unless="${tStat.index > 2}" ></span><br>-->
+                    <!--                Can help with: <span th:each=" tag, tStat : *{tags}" th:class="${tStat.index == 2}? 'tag'" th:text="${tStat.index >= 1}? (${tStat.index == 2}? ', and more' : ', ' + ${tag.name}) : ${tag.name}" th:unless="${tStat.index > 2}" ></span><br>-->
+                    Can help with: <span th:each=" tag, tStat : *{tags}"
+                                         th:text="${tStat.index >= 1}? (${tStat.index == 2}? ', and more' : ', ' + ${tag.name}) : ${tag.name}"
+                                         th:unless="${tStat.index > 2}"></span><br>
+                </td>
+                <td>
+                    <button type="button" th:onclick="'window.location.href=\'/user/' +  *{id} + '\''"
+                            class="btn btn-primary">View Details
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </form>
 
-        <tr th:each="user : ${users}" th:object="${user}">
-            <td>
-                <img class="img-responsive" th:src="${'https://i.pravatar.cc/150/img=' + user.id}">
-            </td>
-            <td>
-                Name: <span th:text="*{name}"></span><br>
-                Location: <span th:text="*{country} + ' - ' + *{city}"></span><br>
-                Age: <span th:text="${user.getAge()}"></span><br>
-<!--                Can help with: <span th:each=" tag, tStat : *{tags}" th:text="${tag.name} + ' '" ></span><br>-->
-<!--                Can help with: <span th:each=" tag, tStat : *{tags}" th:text="${tStat.index == 2}? 'and more' : ${tag.name} + ', '" th:unless="${tStat.index > 2}" ></span><br>-->
-<!--                Can help with: <span th:each=" tag, tStat : *{tags}" th:class="${tStat.index == 2}? 'tag'" th:text="${tStat.index >= 1}? (${tStat.index == 2}? ', and more' : ', ' + ${tag.name}) : ${tag.name}" th:unless="${tStat.index > 2}" ></span><br>-->
-                Can help with: <span th:each=" tag, tStat : *{tags}" th:text="${tStat.index >= 1}? (${tStat.index == 2}? ', and more' : ', ' + ${tag.name}) : ${tag.name}" th:unless="${tStat.index > 2}" ></span><br>
-            </td>
-            <td>
-                <button type="button" th:onclick="'window.location.href=\'/user/' +  *{id} + '\''"
-                        class="btn btn-primary">View Details
-                </button>
-            </td>
-        </tr>
-    </table>
-</form>
-
-<div th:replace="/fragments/map :: map"></div>
-<div id="map" style="width:480px; height:360px"></div>
+    <div th:replace="/fragments/map :: map"></div>
+    <div id="map" style="width:480px; height:360px"></div>
+</div>
 
 <!--<div th:replace="/fragments/base :: footer"></div>-->
 <div th:replace="/fragments/base :: script-import"></div>
