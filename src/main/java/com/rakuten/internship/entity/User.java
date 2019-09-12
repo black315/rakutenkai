@@ -58,5 +58,4 @@ public class User {
 	public int getAge(){
 		return AgeUtil.calculateAge(this.birthdate);
 	}
-
 }

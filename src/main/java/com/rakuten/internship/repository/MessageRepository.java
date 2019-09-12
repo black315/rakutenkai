@@ -13,7 +13,9 @@ import org.springframework.stereotype.Repository;
 public interface MessageRepository extends JpaRepository<Message, Long> {
 
 	@Query("select m from Message m"
-		+ " where m.room_id = :roomId"
-		+ " and m.user.id in :userIds")
-	public List<Message> findByRoomIdAndUserIds(@Param("roomId") Long roomId, @Param("userIds") List<Long> userIds);
+		+ " where (m.user.id = :userId"
+		+ " and m.userTo.id = :userIdTo)"
+		+ " or (m.user.id = :userIdTo"
+		+ " and m.userTo.id = :userId)")
+	public List<Message> findByUserIds(@Param("userId") Integer userId, @Param("userIdTo") Integer userIdTo);
 }
