@@ -8,22 +8,30 @@
 <div th:replace="/fragments/base :: navbar">
 </div>
 
-<table style="table-layout: fixed; width: 100%;">
-  <tr th:each="message : ${messages}">
-    <th:block th:if="${message.user.id == id}">
-      <td align="right">
-        <div th:text="${message.user.name}"></div>
-        <div th:text="${message.content}"></div>
-      </td>
-    </th:block>
-    <th:block th:unless="${message.user.id == id}">
-      <td align="left">
-        <div th:text="${message.user.name}"></div>
-        <div th:text="${message.content}"></div>
-      </td>
-    </th:block>
-  </tr>
-</table>
+<h1>Message</h1>
+
+<div id="scrollTable" style="height: 500px; overflow-y: scroll;">
+  <table style="table-layout: fixed; width: 100%;">
+    <tr th:each="message : ${messages}">
+      <th:block th:if="${message.user.id == id}">
+        <td align="right">
+          <img class="img-responsive" th:src="${'https://i.pravatar.cc/150/img=' + message.user.id}" >
+          <div th:text="${message.user.name}"></div>
+          <div th:text="${message.content}"></div>
+          <div th:text="${#temporals.format(message.timestamp, 'HH:mm')}"></div>
+        </td>
+      </th:block>
+      <th:block th:unless="${message.user.id == id}">
+        <td align="left">
+          <img class="img-responsive" th:src="${'https://i.pravatar.cc/150/img=' + message.user.id}" >
+          <div th:text="${message.user.name}"></div>
+          <div th:text="${message.content}"></div>
+          <div th:text="${#temporals.format(message.timestamp, 'HH:mm')}"></div>
+        </td>
+      </th:block>
+    </tr>
+  </table>
+</div>
 
 <form class="send-form" th:action="@{/message/send}" th:object="${message}" method="post">
   <input type="text" name="content" class="float-left">
@@ -33,5 +41,15 @@
 </form>
 
 <div th:replace="/fragments/base :: footer"></div>
+
+<div th:replace="/fragments/base :: script-import"></div>
+
 </body>
+
+<script type="text/javascript" th:inline="javascript">
+  $(window).on("load", function() {
+    $("#scrollTable").scrollTop($("#scrollTable").height());
+  });
+</script>
+
 </html>
