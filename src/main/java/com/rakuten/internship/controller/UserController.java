@@ -88,15 +88,31 @@ public class UserController {
                                     ModelMap model) {
 
         //Verify if the user is correct
-        List<User> AllUsers = userService.findUsers();
-        System.out.println(user.getUsername());
-//        String filepath = AllUsers.Find(x => x.name == 0);
+        List<User> HitUsers = userService.findUsersFromUsername(user.getUsername());
+//        System.out.println(user.getUsername());
+//        System.out.println(user.getPassword());
 
-        //todo: check with database
-        login.setUserId(5);
-
-        return "redirect:/user/" + login.getV_userId();
+        for(int i = 0; i < HitUsers.size(); i++){
+            User find_user = HitUsers.get(i);
+            if(find_user.getPassword().equals(user.getPassword()))
+            {
+                login.setUserId(find_user.getId());
+                if (login.getV_userId() == null){
+                    return "redirect:/user/";
+                }
+                return "redirect:/user/" + login.getV_userId();
+            }
+        }
+        return "sign_in";
     }
+    @RequestMapping(value = "/out", method = GET)
+    public String logout(){
+        login.setUserId(null);
+        login.setV_userId(null);
+
+        return "redirect:/";
+    }
+
 
     @RequestMapping(value = "/user/{id}", method = GET)
     public String viewDetails(Model model, @PathVariable("id") Integer id){
