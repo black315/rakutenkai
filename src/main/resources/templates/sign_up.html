@@ -1,5 +1,12 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 
+<script type="text/javascript">
+  // TODO ボタンを制御するためのJSコードを作成してください。
+  function link_user() {
+	location.href = "/";
+  }
+  </script>
+
 <head th:replace="/fragments/base :: head">
 </head>
 
@@ -143,11 +150,9 @@
     <input type="text" hidden th:field="*{longitude}">
 
     <button type="submit" class="btn btn-success">Sign up</button>
-<!--    TODO: Remove this type submit-->
-<!--    <button type="submit" class="btn btn-secondary">Cancel</button>-->
-    <button class="btn btn-secondary">Cancel</button>
-</form>
 
+</form>
+<button class="btn btn-secondary" onclick="link_user()">Cancel</button>
 <!--<div th:replace="/fragments/base :: footer"></div>-->
 <div th:replace="/fragments/base :: script-import"></div>
 </body>

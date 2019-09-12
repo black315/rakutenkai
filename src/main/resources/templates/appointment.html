@@ -10,24 +10,27 @@
 
 <h1>Appointment page</h1>
 
-<span th:text="${appointment}"></span>
-
-<!--method="post", th:action="'@{/user/' + ${requested.id} + '}'"-->
-<form>
+<!--<form method="post" th:action="'@{/user/' + ${appointment.get(0).requested.id} + '}'">-->
+<!--<form method="post" th:action="@{/user/}" th:object="${appointment}">-->
+<form method="get" th:action="@{'/user/' + ${appointment.get(0).requested.id}}" th:object="${appointment}">
+    <h2 th:text="${'Appointment with ' + appointment.get(0).requested.name}"></h2>
     <table>
         <tr>
             <td>
-<!--                <img class="img-responsive" th:src="${'https://i.pravatar.cc/150/img=' + ${requested.id}}">-->
+                <img class="img-responsive" th:src="${'https://i.pravatar.cc/150/img=' + appointment.get(0).requested.id}">
             </td>
             <td>
-                Date: <span th:text="${appointment.getDate()}"></span><br>
-                Place: <span th:text="${appointment.getPlace()} + ' - ' + ${appointment.getCity()}"></span><br>
-<!--                Problem: <span th:text="${tag.getName()}"></span><br>-->
-                Detail: <span th:text="${appointment.getDetails()}"</span><br>
+                Date: <span th:text="${appointment.get(0).date}"></span><br>
+                Place: <span th:text="${appointment.get(0).city} + ' - ' + ${appointment.get(0).place}"></span><br>
+                Problem: <span th:text="${appointment.get(0).tag.name}"></span><br>
+                Detail: <span th:text="${appointment.get(0).details}"></span><br>
             </td>
         </tr>
     </table>
+
+    <button class="btn btn-secondary">Back</button>
 </form>
+
 
 <!--<div th:replace="/fragments/base :: footer"></div>-->
 <div th:replace="/fragments/base :: script-import"></div>
