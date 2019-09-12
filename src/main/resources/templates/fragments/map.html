@@ -13,35 +13,49 @@
 
             var list = /*[[${users}]]*/;
 
-            console.log(list); //undefined when only USER
+            if (list == null){
+                var user = /*[[${user}]]*/;
 
+                var latitude = user.latitude;
+                var longitude = user.longitude;
 
-<!--            if (users == null)-->
-<!--            then-->
-<!--            list = new list (user)-->
+                window.onload = function(){
+                    var ymap = new Y.Map("map");
+                    ymap.drawMap(new Y.LatLng(latitude, longitude), 17, Y.LayerSetId.NORMAL);
+                    console.log("LOADED TEST PAGE");
 
-            var latitudes = [];
-            var longitudes = [];
-            for (var i=0; i<list.length; i++){
-                latitudes.push(list[i].latitude);
-                longitudes.push(list[i].longitude);
-            }
-
-            var latitude = (Math.max.apply(null, latitudes) + Math.min.apply(null, latitudes)) / 2;
-            var longitude = (Math.max.apply(null, longitudes) + Math.min.apply(null, longitudes)) / 2;
-
-            window.onload = function(){
-                var ymap = new Y.Map("map");
-                ymap.drawMap(new Y.LatLng(latitude, longitude), 17, Y.LayerSetId.NORMAL);
-                console.log("LOADED TEST PAGE");
-
-                for (var i=0; i<list.length; i++){
-                    var label = new Y.Label(new Y.LatLng(list[i].latitude, list[i].longitude), list[i].name);
+                    var label = new Y.Label(new Y.LatLng(user.latitude, user.longitude), user.name);
                     ymap.addFeature(label);
+
+                    var control = new Y.SliderZoomControlVertical();
+                    ymap.addControl(control);
+                }
+            }
+            else{
+                console.log("List is not null.");
+                var latitudes = [];
+                var longitudes = [];
+                for (var i=0; i<list.length; i++){
+                    latitudes.push(list[i].latitude);
+                    longitudes.push(list[i].longitude);
                 }
 
-                var control = new Y.SliderZoomControlVertical();
-                ymap.addControl(control);
+                var latitude = (Math.max.apply(null, latitudes) + Math.min.apply(null, latitudes)) / 2;
+                var longitude = (Math.max.apply(null, longitudes) + Math.min.apply(null, longitudes)) / 2;
+
+                window.onload = function(){
+                    var ymap = new Y.Map("map");
+                    ymap.drawMap(new Y.LatLng(latitude, longitude), 17, Y.LayerSetId.NORMAL);
+                    console.log("LOADED TEST PAGE");
+
+                    for (var i=0; i<list.length; i++){
+                        var label = new Y.Label(new Y.LatLng(list[i].latitude, list[i].longitude), list[i].name);
+                        ymap.addFeature(label);
+                    }
+
+                    var control = new Y.SliderZoomControlVertical();
+                    ymap.addControl(control);
+                }
             }
 
         /*]]>*/
