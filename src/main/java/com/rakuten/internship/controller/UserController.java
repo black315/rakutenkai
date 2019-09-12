@@ -5,6 +5,7 @@ import com.rakuten.internship.entity.User;
 import com.rakuten.internship.service.LocationService;
 import com.rakuten.internship.service.TagService;
 import com.rakuten.internship.service.UserService;
+import com.rakuten.internship.util.AgeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.rakuten.internship.util.AgeUtil;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -52,5 +53,9 @@ public class User {
 
 	private float longitude;
 	private float latitude;
+
+	public int getAge(){
+		return AgeUtil.calculateAge(this.birthdate);
+	}
 
 }
