@@ -9,14 +9,14 @@ CREATE TABLE IF NOT EXISTS lang(
   lang_id INT(10) PRIMARY KEY AUTO_INCREMENT,
   lang_cap VARCHAR(100)
 );
-INSERT INTO USER (NAME, COUNTRY, USERNAME, CITY, GENDER, PICTURE_URL, RATING,  ROLE, BIRTHDATE, SELF_INTRODUCTION, LATITUDE, LONGITUDE) VALUES
+INSERT INTO USER (NAME, COUNTRY, USERNAME, CITY, GENDER, PICTURE_URL, RATING,  ROLE, BIRTHDATE, SELF_INTRODUCTION, LATITUDE, LONGITUDE, PASSWORD) VALUES
 
-('John Crom', 'Japan', 'john.crom', 'Osaka', 'Male', 'url', 3, 'USER', '2000/07/10', 'About John', 34.703715, 135.494137),
-('Carla Pike', 'United States of America', 'carla.pike', 'Osaka', 'Female', 'url', 3, 'USER', '2000/07/10', 'About Carla', 34.703582, 135.496104),
-('Thomas Fenmoy', 'Vietnam', 'thomas.fenmoy', 'Osaka', 'Male', 'url', 3, 'USER', '2000/07/10', 'About Thomas', 34.702171, 135.497381),
-('Doraemon', 'Japan', 'anpan.man', 'Tokyo', 'Male', 'url', 3, 'USER', '2000/07/10', 'About Doraemon', 35.681876, 139.769252),
-('Gopher', 'Japan', 'go.lang', 'Tokyo', 'Male', 'url', 3, 'USER', '2000/07/10', 'About Gopher', 35.679580, 139.764515),
-('Carl Times', 'Japan', 'carl.times', 'Nagoya', 'Male', 'url', 3, 'USER', '1998/07/10', 'Likes Languages and music', 35.170519, 136.880218);
+('John Crom', 'Japan', 'john.crom', 'Osaka', 'Male', 'url', 3, 'USER', '2000/07/10', 'About John', 34.703715, 135.494137, '$2a$10$BB1J66T/3kMcmidDah0R7OJtycBKlvJObNsW0DuSHYOoXmsVTt3bK'),
+('Carla Pike', 'United States of America', 'carla.pike', 'Osaka', 'Female', 'url', 3, 'USER', '2000/07/10', 'About Carla', 34.703582, 135.496104,'$2a$10$BB1J66T/3kMcmidDah0R7OJtycBKlvJObNsW0DuSHYOoXmsVTt3bK'),
+('Thomas Fenmoy', 'Vietnam', 'thomas.fenmoy', 'Osaka', 'Male', 'url', 3, 'USER', '2000/07/10', 'About Thomas', 34.702171, 135.497381,'$2a$10$BB1J66T/3kMcmidDah0R7OJtycBKlvJObNsW0DuSHYOoXmsVTt3bK'),
+('Doraemon', 'Japan', 'anpan.man', 'Tokyo', 'Male', 'url', 3, 'USER', '2000/07/10', 'About Doraemon', 35.681876, 139.769252,'$2a$10$BB1J66T/3kMcmidDah0R7OJtycBKlvJObNsW0DuSHYOoXmsVTt3bK'),
+('Gopher', 'Japan', 'go.lang', 'Tokyo', 'Male', 'url', 3, 'USER', '2000/07/10', 'About Gopher', 35.679580, 139.764515,'$2a$10$BB1J66T/3kMcmidDah0R7OJtycBKlvJObNsW0DuSHYOoXmsVTt3bK'),
+('Carl Times', 'Japan', 'carl.times', 'Nagoya', 'Male', 'url', 3, 'USER', '1998/07/10', 'Likes Languages and music', 35.170519, 136.880218,'$2a$10$BB1J66T/3kMcmidDah0R7OJtycBKlvJObNsW0DuSHYOoXmsVTt3bK');
 
 INSERT INTO TAG (NAME) VALUES
 ('Medical support'),
