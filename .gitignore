@@ -1,4 +1,6 @@
 HELP.md
+h2db.mv.db
+h2db.trace.db
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
