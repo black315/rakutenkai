@@ -22,8 +22,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
 public class UserController {
-
-    LogIn login = new LogIn();
+    @Autowired
+    private LogIn login;
 	
     @Autowired
     private LocationService locationService;
