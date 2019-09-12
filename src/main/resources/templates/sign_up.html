@@ -81,9 +81,23 @@
         <tr>
             <th>City</th>
             <td>
-                <div>
-                    <input type="text" th:field="*{city}"/>
-                </div>
+                <select id="city" name="city" th:field="*{city}">
+                    <option value="Tokyo">東京</option>
+                    <option value="Sinjuku">新宿</option>
+                    <option value="Sibuya">渋谷</option>
+                    <option value="Harajuku">原宿</option>
+                    <option value="Ikebukuro">池袋</option>
+                    <option value="Akihabara">秋葉原</option>
+                    <option value="Sinagawa">品川</option>
+                    <option value="Yokohama">横浜</option>
+                    <option value="Nagoya">名古屋</option>
+                    <option value="Umeda">梅田</option>
+                    <option value="Namba">難波</option>
+                    <option value="Koube">神戸</option>
+                    <option value="Kyoto">京都</option>
+                    <option value="Okinawa">沖縄</option>
+                    <option value="Hokkaido">北海道</option>
+                </select>
             </td>
         </tr>
         <tr>
@@ -106,6 +120,15 @@
                 <div>
                     <input type="text" th:field="*{selfIntroduction}"/>
                 </div>
+            </td>
+        </tr>
+        <tr>
+            <th>What you can help</th>
+            <td>
+                <select id="singleSelect" name="selectedItem">
+                    <option value="">---</option>
+                    <option th:each="tags : ${tags}" th:value="${tags.tagId}" th:text="${tags.name}" th:selected="${tags.name} == *{selectedItem}" th:field="*{tags}">singleSelect</option>
+                </select>
             </td>
         </tr>
     </table>
