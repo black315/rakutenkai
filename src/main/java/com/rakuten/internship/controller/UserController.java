@@ -16,14 +16,15 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
 public class UserController {
-
-    LogIn login = new LogIn();
+    @Autowired
+    private LogIn login;
 	
     @Autowired
     private LocationService locationService;
@@ -66,7 +67,17 @@ public class UserController {
         String ipAddress = request.getHeader("X-Forwarded-For");
         if (ipAddress == null) ipAddress = request.getRemoteAddr();
         LocationForm locationForm = locationService.convertIpAddressToLocationForm(ipAddress);
-        model.addAttribute("user", new User());
+
+        User usr = new User();
+
+        Random r = new Random();
+        float dummyLat = 35.6733308f;
+        float dummyLong = 139.750137f;
+
+        usr.setLatitude(locationForm.getLatitude().equals("0")? dummyLat : Float.parseFloat( locationForm.getLatitude()));
+        usr.setLongitude(locationForm.getLongitude().equals("0")? dummyLong : Float.parseFloat(locationForm.getLongitude()));
+
+        model.addAttribute("user", usr);
         model.addAttribute("city", locationForm.getCity());
         model.addAttribute("tags", tagService.findTags());
         return "sign_up";
@@ -78,6 +89,8 @@ public class UserController {
             return "error";
         }
 
+        user.setBirthdate(user.getBirthdate().replace("-","/")); //Fix to insert the correct format
+        user.setRole("USER");
         userService.save(user);
         return "complete";
     }
@@ -87,20 +100,31 @@ public class UserController {
                                     ModelMap model) {
 
         //Verify if the user is correct
-//        List<User> AllUsers = userService.findUsers();
+        List<User> HitUsers = userService.findUsersFromUsername(user.getUsername());
 //        System.out.println(user.getUsername());
-//        for(String a : AllUsers.name){
-//            if(a.equals(b)){
-//
-//                break;
-//            }
-//        }
+//        System.out.println(user.getPassword());
 
-        //todo: check with database
-        login.setUserId(5);
-
-        return "redirect:/user/" + login.getV_userId();
+        for(int i = 0; i < HitUsers.size(); i++){
+            User find_user = HitUsers.get(i);
+            if(find_user.getPassword().equals(user.getPassword()))
+            {
+                login.setUserId(find_user.getId());
+                if (login.getV_userId() == null){
+                    return "redirect:/user/";
+                }
+                return "redirect:/user/" + login.getV_userId();
+            }
+        }
+        return "sign_in";
     }
+    @RequestMapping(value = "/out", method = GET)
+    public String logout(){
+        login.setUserId(null);
+        login.setV_userId(null);
+
+        return "redirect:/";
+    }
+
 
     @RequestMapping(value = "/user/{id}", method = GET)
     public String viewDetails(Model model, @PathVariable("id") Integer id){

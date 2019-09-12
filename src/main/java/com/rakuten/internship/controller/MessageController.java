@@ -3,6 +3,7 @@ package com.rakuten.internship.controller;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.rakuten.internship.session.LogIn;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,10 +19,24 @@ import com.rakuten.internship.repository.MessageRepository;
 @Controller
 @RequestMapping("/message")
 public class MessageController {
-	
+
+    @Autowired
+    private LogIn login;
+
 	@Autowired
 	MessageRepository messageRepositoy;
-	
+
+	@GetMapping("")
+    public String message(Model model) {
+	    ContactForm cf = new ContactForm();
+	    cf.setIdFrom(login.getUserId());
+	    cf.setIdTo(login.getV_userId());
+
+	    model.addAttribute("contactForm", cf);
+	    return "redirect:/message/contact";
+
+    }
+
     @GetMapping("/contact")
     public String contact(@ModelAttribute ContactForm contactForm, Model model){
         List<Message> messages = messageRepositoy.findByUserIds(contactForm.getIdFrom(), contactForm.getIdTo());
