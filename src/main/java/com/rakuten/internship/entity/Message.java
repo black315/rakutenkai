@@ -1,5 +1,7 @@
 package com.rakuten.internship.entity;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,9 +32,9 @@ public class Message {
 	@Column(name = "Content")
 	private String content;
 
-	@NotBlank
-	private String timestamp;
-
+	@Column(name = "timestamp")
+	private LocalDateTime timestamp;
+	
 	@Column(name = "private_message")
 	private boolean privateMessage;
 
