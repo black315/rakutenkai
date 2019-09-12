@@ -27,6 +27,9 @@ public class Message {
 //    @JoinColumn(name = "User_id")
 	@ManyToOne
 	private User user;
+    
+    @ManyToOne
+    private User userTo;
 
 	@NotBlank(message = "Description is mandatory")
 	@Column(name = "Content")
@@ -78,6 +81,20 @@ public class Message {
 	 */
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	/**
+	 * @return the userTo
+	 */
+	public User getUserTo() {
+		return userTo;
+	}
+
+	/**
+	 * @param userTo the userTo to set
+	 */
+	public void setUserTo(User userTo) {
+		this.userTo = userTo;
 	}
 
 	/**

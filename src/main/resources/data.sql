@@ -54,9 +54,9 @@ INSERT INTO USER_TAGS (USER_ID, TAGS_TAG_ID) VALUES
     (6, 2),
     (6, 8);
 
-INSERT INTO MESSAGE (USER_ID, CONTENT, TIMESTAMP, PRIVATE_MESSAGE) VALUES
- (1, 'Hello', '2019-09-12 10:03:46', false),
- (2, 'Hi', '2019-09-12 10:05:27', false),
- (1, 'How are you?', '2019-09-12 10:05:30', false),
- (3, 'Good morning', '2019-09-12 10:07:00', false),
- (1, 'aaaaaaaaaa', '2019-09-12 10:08:17', false);
+INSERT INTO MESSAGE (USER_ID, USER_TO_ID, CONTENT, TIMESTAMP, PRIVATE_MESSAGE) VALUES
+ (1, 2, 'Hello', '2019-09-12 10:03:46', false),
+ (2, 1, 'Hi', '2019-09-12 10:05:27', false),
+ (1, 2, 'How are you?', '2019-09-12 10:05:30', false),
+ (3, 1, 'Good morning', '2019-09-12 10:07:00', false),
+ (1, 2, 'aaaaaaaaaa', '2019-09-12 10:08:17', false);

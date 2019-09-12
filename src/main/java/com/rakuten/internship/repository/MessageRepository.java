@@ -12,5 +12,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MessageRepository extends JpaRepository<Message, Long> {
 
-	public List<Message> findByUserIdIn(List<Integer> userIds);
+	@Query("select m from Message m"
+		+ " where (m.user.id = :userId"
+		+ " and m.userTo.id = :userIdTo)"
+		+ " or (m.user.id = :userIdTo"
+		+ " and m.userTo.id = :userId)")
+	public List<Message> findByUserIds(@Param("userId") Integer userId, @Param("userIdTo") Integer userIdTo);
 }
