@@ -12,9 +12,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.Optional;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -37,14 +37,22 @@ public class UserController {
     	LocationForm locationForm = locationService.convertIpAddressToLocationForm(ipAddress);
     	model.addAttribute("city", locationForm.getCity());
     	model.addAttribute("tags", tagService.findTags());
-    	return "home";
+        return "home";
     }
 
     @GetMapping("/search")
-    public String search(Model model) {
-        
-        //List<User> users = userService.findUsersByTag(tagService.findBytagId(senddata.tagId));
-        List<User> users = userService.findUsersFromCity("Osaka");
+    public String search(Model model,
+                         @RequestParam("city") Optional<String> city,
+                         @RequestParam("tag") Optional<Integer> tagId) {
+
+        List<User> users = null;
+
+        if (tagId.isPresent() && city.isPresent()) {
+            users = userService.findUsersByCityAndTag(city.get(), tagService.findByTagId(tagId.get()));
+        } else if (city.isPresent()) {
+           users = userService.findUsersFromCity(city.get());
+        }
+
         model.addAttribute("users", users);
         return "output";
     }
