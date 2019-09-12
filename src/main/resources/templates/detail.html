@@ -15,12 +15,14 @@
                 <img class="img-responsive" th:src="${'https://i.pravatar.cc/300/img=' + user.id}" >
             </td>
             <td>
-                Name: <span th:text="*{username}"></span><br>
+                Name: <span th:text="*{name}"></span><br>
+                Username: <span th:text="*{username}"></span><br>
                 Gender: <span th:text="*{gender}"></span><br>
                 Age: <span th:text="*{getAge()}"></span><br>
                 Country: <span th:text="*{country}"></span><br>
                 Prefecture: <span th:text="*{city}"></span><br>
                 Self introduction: <span th:text="*{selfIntroduction}"></span><br>
+                Can help with: <span th:each=" tag, tStat : *{tags}" th:text="${tStat.index >= 1}? ', ' + ${tag.name} : ${tag.name}" ></span><br></span><br>
             </td>
         </tr>
         <tr>
