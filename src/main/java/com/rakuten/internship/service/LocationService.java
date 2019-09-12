@@ -1,6 +1,7 @@
 package com.rakuten.internship.service;
 
 import com.rakuten.internship.entity.LocationForm;
+import com.rakuten.internship.util.APICaller;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.http.MediaType.TEXT_HTML;
@@ -8,17 +9,12 @@ import static org.springframework.http.MediaType.TEXT_HTML;
 import java.util.Arrays;
 import java.util.List;
 
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.client.RestTemplate;
 
 @Service
 @Transactional
 public class LocationService {
-
-	/** API利用に必要 */
-	final private String key = "c3ddba73a4bec65aecdd6acaa626c7c0ff0c2289f45062545dfb7ff520e02f10";
 	
 	/**
 	 * IPアドレスを位置フォームに変換します
@@ -26,10 +22,8 @@ public class LocationService {
 	 * @return 位置フォーム
 	 */
     public LocationForm convertIpAddressToLocationForm(String ipAddress) {
-    	final String request = "http://api.ipinfodb.com/v3/ip-city/?key=" + key + "&ip=" + ipAddress;    	
-    	final RestTemplate restTemplate = new RestTemplate();
-    	String response =  restTemplate.getForObject(request, String.class);
-    	return convertResponseToForm(response);
+    	String locationInfo =  APICaller.getLocationInfoFromIpAddress(ipAddress);
+    	return convertResponseToForm(locationInfo);
     }
     
     /**
