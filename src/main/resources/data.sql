@@ -52,5 +52,7 @@ INSERT INTO USER_TAGS (USER_ID, TAGS_TAG_ID) VALUES
     (6, 2),
     (6, 8);
 
+INSERT INTO APPOINTMENT (REQUESTER_ID, REQUESTED_ID, DATE, CITY, PLACE, DETAILS, TAG_TAG_ID) VALUES
+(1, 4, '2019/10/02', 'Osaka', 'Umeda station' , 'Please help me with some paperwork at the post office!', 5);
 
 
