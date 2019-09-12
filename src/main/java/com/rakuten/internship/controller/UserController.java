@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -63,7 +64,17 @@ public class UserController {
         String ipAddress = request.getHeader("X-Forwarded-For");
         if (ipAddress == null) ipAddress = request.getRemoteAddr();
         LocationForm locationForm = locationService.convertIpAddressToLocationForm(ipAddress);
-        model.addAttribute("user", new User());
+
+        User usr = new User();
+
+        Random r = new Random();
+        float dummyLat = 35.6733308f;
+        float dummyLong = 139.750137f;
+
+        usr.setLatitude(locationForm.getLatitude().equals("0")? dummyLat : Float.parseFloat( locationForm.getLatitude()));
+        usr.setLongitude(locationForm.getLongitude().equals("0")? dummyLong : Float.parseFloat(locationForm.getLongitude()));
+
+        model.addAttribute("user", usr);
         model.addAttribute("city", locationForm.getCity());
         model.addAttribute("tags", tagService.findTags());
         return "sign_up";
@@ -75,6 +86,8 @@ public class UserController {
             return "error";
         }
 
+        user.setBirthdate(user.getBirthdate().replace("-","/")); //Fix to insert the correct format
+        user.setRole("USER");
         userService.save(user);
         return "complete";
     }
