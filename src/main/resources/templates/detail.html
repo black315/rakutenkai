@@ -8,26 +8,35 @@
 <div th:replace="/fragments/base :: navbar">
 </div>
 <h1 th:object="${user}"><span th:text="${user.username + '''s Profile'}"></span></h1>
-    <div th:replace="/fragments/map :: map">?</div>
-    <div id="map" style="width:480px; height:360px"></div>
 
     <table>
         <tr th:object="${user}">
-
             <td>
                 <img class="img-responsive" th:src="${'https://i.pravatar.cc/300/img=' + user.id}" >
             </td>
             <td>
-                User name: <span th:text="*{username}"></span><br>
+                Name: <span th:text="*{name}"></span><br>
+                Username: <span th:text="*{username}"></span><br>
+                Gender: <span th:text="*{gender}"></span><br>
+                Age: <span th:text="*{getAge()}"></span><br>
+                Country: <span th:text="*{country}"></span><br>
                 Prefecture: <span th:text="*{city}"></span><br>
-                Age: <span th:text="*{birthdate}"></span><br>
+                Self introduction: <span th:text="*{selfIntroduction}"></span><br>
+                Can help with: <span th:each=" tag, tStat : *{tags}" th:text="${tStat.index >= 1}? ', ' + ${tag.name} : ${tag.name}" ></span><br></span><br>
             </td>
-
         </tr>
         <tr>
             <td>
-                <!-- TODO: change window.location.href url -->
-                <button type="button" th:onclick="'location.href= \' /search \''" class="btn btn-primary">Back</button>
+                <div th:replace="/fragments/map :: map">?</div>
+                <div id="map" style="width:480px; height:360px"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                    <!-- TODO:change url of location.href to message.html -->
+                    <button type="button" class="btn btn-primary btn-lg btn-block" th:onclick="'location.href= \' / \''">Contact</button>
+                    <button type="button" class="btn btn-outline-primary btn-lg btn-block" th:onclick="'location.href= \' / \''">Back</button>
+
             </td>
         </tr>
 
@@ -49,6 +58,7 @@
             </tr>
         -->
     </table>
+
 
 <!--<div th:replace="/fragments/base :: footer"></div>-->
 <div th:replace="/fragments/base :: script-import"></div>

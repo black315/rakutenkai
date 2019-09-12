@@ -1,6 +1,5 @@
 package com.rakuten.internship.controller;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +22,8 @@ public class MessageController {
 	
     @GetMapping("/contact")
     public String contact(@ModelAttribute ContactForm contactForm, Model model){
-    	List<Long> userIds = Arrays.asList(contactForm.getIdFrom(), contactForm.getIdTo());
-    	List<Message> messages = messageRepositoy.findByRoomIdAndUserIds(contactForm.getRoomId(), userIds);
-    	model.addAttribute("id", contactForm.getIdFrom());
+        List<Message> messages = messageRepositoy.findByUserIds(contactForm.getIdFrom(), contactForm.getIdTo());
+        model.addAttribute("id", contactForm.getIdFrom());
     	model.addAttribute("messages", messages);
     	return "contact";
     }
