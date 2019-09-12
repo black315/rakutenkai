@@ -5,25 +5,50 @@
 
 <body>
 
+<script type="text/javascript">
+    function getAge(dateString) {
+        console.log(dateString);
+        let today = new Date();
+        let birthDate = new Date(dateString);
+        let age = today.getFullYear() - birthDate.getFullYear();
+        let m = today.getMonth() - birthDate.getMonth();
+
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+
+        return age;
+    }
+
+
+</script>
+
 <div th:replace="/fragments/base :: navbar">
 </div>
+
     <h1>Search results</h1>
     <div th:replace="/fragments/map :: map"></div>
     <div id="map" style="width:480px; height:360px"></div>
     <form>
         <table>
+
         <tr th:each="user : ${users}" th:object="${user}">
             <td>
-                <img class="img-responsive" th:src="${'https://i.pravatar.cc/150/img=' + user.id}" >
+                <img class="img-responsive" th:src="${'https://i.pravatar.cc/150/img=' + user.id}">
             </td>
             <td>
-                User name: <span th:text="*{username}"></span><br>
-                Prefecture: <span th:text="*{city}"></span><br>
-                Age: <span th:text="*{birthdate}"></span><br>
+                Name: <span th:text="*{name}"></span><br>
+                Location: <span th:text="*{country} + ' - ' + *{city}"></span><br>
+                Age: <span th:text="${user.getAge()}"></span><br>
+<!--                Can help with: <span th:each=" tag, tStat : *{tags}" th:text="${tag.name} + ' '" ></span><br>-->
+<!--                Can help with: <span th:each=" tag, tStat : *{tags}" th:text="${tStat.index == 2}? 'and more' : ${tag.name} + ', '" th:unless="${tStat.index > 2}" ></span><br>-->
+<!--                Can help with: <span th:each=" tag, tStat : *{tags}" th:class="${tStat.index == 2}? 'tag'" th:text="${tStat.index >= 1}? (${tStat.index == 2}? ', and more' : ', ' + ${tag.name}) : ${tag.name}" th:unless="${tStat.index > 2}" ></span><br>-->
+                Can help with: <span th:each=" tag, tStat : *{tags}" th:text="${tStat.index >= 1}? (${tStat.index == 2}? ', and more' : ', ' + ${tag.name}) : ${tag.name}" th:unless="${tStat.index > 2}" ></span><br>
             </td>
             <td>
-                <!-- TODO: change window.location.href url -->
-                <button type="button" th:onclick="'window.location.href=\'/user/' +  *{id} + '\''" class="btn btn-primary">View Details</button>
+                <button type="button" th:onclick="'window.location.href=\'/user/' +  *{id} + '\''"
+                        class="btn btn-primary">View Details
+                </button>
             </td>
         </tr>
 
@@ -44,8 +69,8 @@
                 </tr>
             </tr>
         -->
-        </table>
-    </form>
+    </table>
+</form>
 <!--<div th:replace="/fragments/base :: footer"></div>-->
 <div th:replace="/fragments/base :: script-import"></div>
 </body>

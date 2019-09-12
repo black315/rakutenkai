@@ -5,6 +5,7 @@ import com.rakuten.internship.entity.User;
 import com.rakuten.internship.service.LocationService;
 import com.rakuten.internship.service.TagService;
 import com.rakuten.internship.service.UserService;
+import com.rakuten.internship.util.AgeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,9 +13,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.Optional;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -37,21 +38,34 @@ public class UserController {
     	LocationForm locationForm = locationService.convertIpAddressToLocationForm(ipAddress);
     	model.addAttribute("city", locationForm.getCity());
     	model.addAttribute("tags", tagService.findTags());
-    	return "home";
+        return "home";
     }
 
     @GetMapping("/search")
-    public String search(Model model) {
-        
-        //List<User> users = userService.findUsersByTag(tagService.findBytagId(senddata.tagId));
-        List<User> users = userService.findUsersFromCity("Osaka");
+    public String search(Model model,
+                         @RequestParam("city") Optional<String> city,
+                         @RequestParam("tag") Optional<Integer> tagId) {
+
+        List<User> users = null;
+
+        if (tagId.isPresent() && city.isPresent()) {
+            users = userService.findUsersByCityAndTag(city.get(), tagService.findByTagId(tagId.get()));
+        } else if (city.isPresent()) {
+           users = userService.findUsersFromCity(city.get());
+        }
+
         model.addAttribute("users", users);
         return "output";
     }
 
     @GetMapping("/register")
-    public String getRegister(Model model) {
+    public String getRegister(Model model, HttpServletRequest request) {
+        String ipAddress = request.getHeader("X-Forwarded-For");
+        if (ipAddress == null) ipAddress = request.getRemoteAddr();
+        LocationForm locationForm = locationService.convertIpAddressToLocationForm(ipAddress);
         model.addAttribute("user", new User());
+        model.addAttribute("city", locationForm.getCity());
+        model.addAttribute("tags", tagService.findTags());
         return "sign_up";
     }
 

@@ -19,7 +19,7 @@ public class TagService {
         return tagRepository.findAll();
     }
 
-    public Tag findByName(int id){
+    public Tag findByName(int id) {
         return tagRepository.findBytagId(id);
     }
 
@@ -27,8 +27,8 @@ public class TagService {
         return tagRepository.save(tag);
     }
 
-	public Tag findBytagId(Integer tagId) {
-		return null;
-	}
+    public Tag findByTagId(Integer tagId) {
+        return tagRepository.findBytagId(tagId);
+    }
 
 }

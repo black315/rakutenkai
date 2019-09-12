@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -21,9 +22,18 @@ public class UserService {
     public List<User> findUsers() {
         return userRepository.findAll();
     }
-    
+
     public List<User> findUsersFromCity(String search_city) {
         return userRepository.findByCity(search_city);
+    }
+
+    public List<User> findUsersByCityAndTag(String city, Tag tag) {
+        List<User> users = userRepository.findByCity(city).stream()
+                .filter((userRepository.findByTags(Arrays.asList(tag))::contains))
+                .collect(Collectors.toList());
+
+        System.out.println(users);
+        return users;
     }
 
     public List<User> findUsersByTag(Tag tag) {
@@ -35,7 +45,7 @@ public class UserService {
         return u.orElse(null);
     }
 
-    public User save(User user){
+    public User save(User user) {
         return userRepository.save(user);
     }
 }
