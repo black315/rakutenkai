@@ -27,6 +27,10 @@ public class UserService {
         return userRepository.findByCity(search_city);
     }
 
+    public List<User> findUsersFromUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
     public List<User> findUsersByCityAndTag(String city, Tag tag) {
         List<User> users = userRepository.findByCity(city).stream()
                 .filter((userRepository.findByTags(Arrays.asList(tag))::contains))
@@ -44,6 +48,7 @@ public class UserService {
         Optional<User> u = userRepository.findById(id);
         return u.orElse(null);
     }
+
 
     public User save(User user) {
         return userRepository.save(user);
