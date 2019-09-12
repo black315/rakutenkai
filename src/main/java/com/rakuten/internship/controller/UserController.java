@@ -72,9 +72,8 @@ public class UserController {
         //set that object to the model
         //return the view name
         model.addAttribute("user", userService.findUserById(id));
-        System.out.println(userService.findUserById(id));
         //TODO: Input the right View name
-        return "sign_up";
+        return "detail";
     }
 }
 
