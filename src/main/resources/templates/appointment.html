@@ -10,6 +10,24 @@
 
 <h1>Appointment page</h1>
 
+<span th:text="${appointment}"></span>
+
+<form method="post", th:action="'@{/user/' + ${requested.id} + '}'">
+    <table>
+        <tr>
+            <td>
+                <img class="img-responsive" th:src="${'https://i.pravatar.cc/150/img=' + ${requested.id}}">
+            </td>
+            <td>
+                Date: <span th:text="${appointment.getDate()}"></span><br>
+                Place: <span th:text="${appointment.getPlace()} + ' - ' + ${appointment.getCity()}"></span><br>
+                Problem: <span th:text="${tag.getName()}"></span><br>
+                Detail: <span th:text="${appointment.getDetails()}"</span><br>
+            </td>
+        </tr>
+    </table>
+</form>
+
 <!--<div th:replace="/fragments/base :: footer"></div>-->
 <div th:replace="/fragments/base :: script-import"></div>
 </body>
