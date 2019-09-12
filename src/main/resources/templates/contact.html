@@ -42,11 +42,12 @@
 
 <div th:replace="/fragments/base :: script-import"></div>
 
+</body>
+
 <script type="text/javascript" th:inline="javascript">
-$(function() {
-　　$("#scrollTable").animate({scrollTop: $("#scrollTable")[0].scrollHeight}, 'fast');
-});
+  $(window).on("load", function() {
+    $("#scrollTable").scrollTop($("#scrollTable").height());
+  });
 </script>
 
-</body>
 </html>
