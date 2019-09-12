@@ -75,7 +75,6 @@ public class UserController {
         }
 
         userService.save(user);
-        System.out.println(user);
         return "complete";
     }
 
