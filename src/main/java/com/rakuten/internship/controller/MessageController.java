@@ -26,21 +26,13 @@ public class MessageController {
 	@Autowired
 	MessageRepository messageRepositoy;
 
-	@GetMapping("")
-    public String message(Model model) {
-	    ContactForm cf = new ContactForm();
-	    cf.setIdFrom(login.getUserId());
-	    cf.setIdTo(login.getV_userId());
-
-	    model.addAttribute("contactForm", cf);
-	    return "redirect:/message/contact";
-
-    }
-
-    @GetMapping("/contact")
-    public String contact(@ModelAttribute ContactForm contactForm, Model model){
-        List<Message> messages = messageRepositoy.findByUserIds(contactForm.getIdFrom(), contactForm.getIdTo());
-        model.addAttribute("id", contactForm.getIdFrom());
+    @GetMapping("")
+    public String message(Model model){
+        Integer idFrom = login.getUserId();
+        Integer idTo = login.getV_userId();
+        List<Message> messages = messageRepositoy.findByUserIds(idFrom, idTo);
+        model.addAttribute("idFrom", idFrom);
+        model.addAttribute("idTo", idTo);
     	model.addAttribute("messages", messages);
     	return "contact";
     }
@@ -50,7 +42,7 @@ public class MessageController {
         LocalDateTime now = LocalDateTime.now();
         message.setTimestamp(now);
         messageRepositoy.save(message);
-        return "redirect:/message/contact";
+        return "redirect:/message";
     }
 
 }
