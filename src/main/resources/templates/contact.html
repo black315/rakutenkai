@@ -14,12 +14,14 @@
       <td align="right">
         <div th:text="${message.user.name}"></div>
         <div th:text="${message.content}"></div>
+        <div th:text="${#temporals.format(message.timestamp, 'HH:mm')}"></div>
       </td>
     </th:block>
     <th:block th:unless="${message.user.id == id}">
       <td align="left">
         <div th:text="${message.user.name}"></div>
         <div th:text="${message.content}"></div>
+        <div th:text="${#temporals.format(message.timestamp, 'HH:mm')}"></div>
       </td>
     </th:block>
   </tr>
