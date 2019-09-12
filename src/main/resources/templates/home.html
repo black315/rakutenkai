@@ -7,18 +7,17 @@
 
             let cityElmn = document.getElementById('city');
             let selectedCity = cityElmn.options[cityElmn.selectedIndex].value;
-            console.log(selectedCity);
 
             let tagElm = document.getElementById('singleSelect');
             let selectedTag = tagElm.options[tagElm.selectedIndex].value;
-            console.log(selectedTag);
 
-            query = query + 'city=\"' + selectedCity + '\"&tag=' + selectedTag;
+            query = query + 'city=' + selectedCity + '&tag=' + selectedTag;
             console.log(query);
 
             location.href = query;
         };
     });
+
 </script>
 
 <head th:replace="/fragments/base :: head">
@@ -37,7 +36,7 @@
 
 <!-- <table border="1" width="500" cellspacing="0" cellpadding="5" bordercolor="#333333"> -->
 <form name="sendData">
- <tr>
+    <tr>
         <select id="prefecture" name="prefecture">
             <option value="北海道">北海道</option>
             <option value="青森県">青森県</option>
@@ -89,29 +88,32 @@
         </select>
     </tr>
     <tr>
-            <select id="city" name="city">
-                <option value="Tokyo">東京</option>
-                <option value="Sinjuku">新宿</option>
-                <option value="Sibuya">渋谷</option>
-                <option value="Harajuku">原宿</option>
-                <option value="Ikebukuro">池袋</option>
-                <option value="Akihabara">秋葉原</option>
-                <option value="Sinagawa">品川</option>
-                <option value="Yokohama">横浜</option>
-                <option value="Nagoya">名古屋</option>
-                <option value="Umeda">梅田</option>
-                <option value="Namba">難波</option>
-                <option value="Koube">神戸</option>
-                <option value="Kyoto">京都</option>
-                <option value="Okinawa">沖縄</option>
-                <option value="Hokkaido">北海道</option>
-            </select>
-        </tr>
+        <select id="city" name="city">
+            <option value="Tokyo">東京</option>
+            <option value="Osaka">大阪</option>
+            <option value="Sinjuku">新宿</option>
+            <option value="Sibuya">渋谷</option>
+            <option value="Harajuku">原宿</option>
+            <option value="Ikebukuro">池袋</option>
+            <option value="Akihabara">秋葉原</option>
+            <option value="Sinagawa">品川</option>
+            <option value="Yokohama">横浜</option>
+            <option value="Nagoya">名古屋</option>
+            <option value="Umeda">梅田</option>
+            <option value="Namba">難波</option>
+            <option value="Koube">神戸</option>
+            <option value="Kyoto">京都</option>
+            <option value="Okinawa">沖縄</option>
+            <option value="Hokkaido">北海道</option>
+        </select>
+    </tr>
     <br><br>
-    <font size='4'>Whats problem?</font><br>
+    <font size='4'>What's your problem?</font><br>
     <select id="singleSelect" name="selectedItem">
-            <option value="">---</option>
-            <option th:each="tags : ${tags}" th:value="${tags.tagId}" th:text="${tags.name}" th:selected="${tags.name} == *{selectedItem}">singleSelect</option>
+        <option value="">Choose a problem</option>
+        <option th:each="tags : ${tags}" th:value="${tags.tagId}" th:text="${tags.name}"
+                th:selected="${tags.name} == *{selectedItem}">singleSelect
+        </option>
     </select>
 </form>
 <br><br>
