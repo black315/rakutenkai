@@ -59,8 +59,13 @@ public class UserController {
     }
 
     @GetMapping("/register")
-    public String getRegister(Model model) {
+    public String getRegister(Model model, HttpServletRequest request) {
+        String ipAddress = request.getHeader("X-Forwarded-For");
+        if (ipAddress == null) ipAddress = request.getRemoteAddr();
+        LocationForm locationForm = locationService.convertIpAddressToLocationForm(ipAddress);
         model.addAttribute("user", new User());
+        model.addAttribute("city", locationForm.getCity());
+        model.addAttribute("tags", tagService.findTags());
         return "sign_up";
     }
 
