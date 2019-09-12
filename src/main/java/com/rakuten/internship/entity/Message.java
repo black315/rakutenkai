@@ -38,4 +38,88 @@ public class Message {
 	@Column(name = "private_message")
 	private boolean privateMessage;
 
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the room_id
+	 */
+	public Long getRoom_id() {
+		return room_id;
+	}
+
+	/**
+	 * @param room_id the room_id to set
+	 */
+	public void setRoom_id(Long room_id) {
+		this.room_id = room_id;
+	}
+
+	/**
+	 * @return the user
+	 */
+	public User getUser() {
+		return user;
+	}
+
+	/**
+	 * @param user the user to set
+	 */
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	/**
+	 * @return the content
+	 */
+	public String getContent() {
+		return content;
+	}
+
+	/**
+	 * @param content the content to set
+	 */
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	/**
+	 * @return the timestamp
+	 */
+	public LocalDateTime getTimestamp() {
+		return timestamp;
+	}
+
+	/**
+	 * @param timestamp the timestamp to set
+	 */
+	public void setTimestamp(LocalDateTime timestamp) {
+		this.timestamp = timestamp;
+	}
+
+	/**
+	 * @return the privateMessage
+	 */
+	public boolean isPrivateMessage() {
+		return privateMessage;
+	}
+
+	/**
+	 * @param privateMessage the privateMessage to set
+	 */
+	public void setPrivateMessage(boolean privateMessage) {
+		this.privateMessage = privateMessage;
+	}
+
 }

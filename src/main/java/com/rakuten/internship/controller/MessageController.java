@@ -23,8 +23,8 @@ public class MessageController {
 	
     @GetMapping("/contact")
     public String contact(@ModelAttribute ContactForm contactForm, Model model){
-    	List<Long> userIds = Arrays.asList(contactForm.getIdFrom(), contactForm.getIdTo());
-    	List<Message> messages = messageRepositoy.findByRoomIdAndUserIds(contactForm.getRoomId(), userIds);
+    	List<Integer> userIds = Arrays.asList(contactForm.getIdFrom(), contactForm.getIdTo());
+    	List<Message> messages = messageRepositoy.findByUserIdIn(userIds);
     	model.addAttribute("id", contactForm.getIdFrom());
     	model.addAttribute("messages", messages);
     	return "contact";

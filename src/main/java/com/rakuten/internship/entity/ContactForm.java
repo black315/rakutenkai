@@ -13,10 +13,10 @@ public class ContactForm {
 	private Long roomId;
 	
 	/** 送信元ユーザID */
-	private Long idFrom;
+	private Integer idFrom;
 
 	/** 送信先ユーザID */
-	private Long idTo;
+	private Integer idTo;
 
 	/**
 	 * @return the roomId
@@ -35,28 +35,28 @@ public class ContactForm {
 	/**
 	 * @return the idFrom
 	 */
-	public Long getIdFrom() {
+	public Integer getIdFrom() {
 		return idFrom;
 	}
 
 	/**
 	 * @param idFrom the idFrom to set
 	 */
-	public void setIdFrom(Long idFrom) {
+	public void setIdFrom(Integer idFrom) {
 		this.idFrom = idFrom;
 	}
 
 	/**
 	 * @return the idTo
 	 */
-	public Long getIdTo() {
+	public Integer getIdTo() {
 		return idTo;
 	}
 
 	/**
 	 * @param idTo the idTo to set
 	 */
-	public void setIdTo(Long idTo) {
+	public void setIdTo(Integer idTo) {
 		this.idTo = idTo;
 	}
 }
