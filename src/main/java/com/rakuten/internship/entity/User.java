@@ -32,9 +32,6 @@ public class User {
 	@Column(name = "Rating")
     private int rating;
 
-	@OneToMany(mappedBy = "user")
-	private List<Message> messages;
-
 	@ManyToMany
 //	@JoinTable(
 //			name = "handle_tags",
@@ -43,6 +40,7 @@ public class User {
 	private List<Tag> tags;
 
 	private String country;
+	private String password; //This has to be encrypted
 	private String city;
 	private String username;
 	private String role;
@@ -57,5 +55,4 @@ public class User {
 	public int getAge(){
 		return AgeUtil.calculateAge(this.birthdate);
 	}
-
 }

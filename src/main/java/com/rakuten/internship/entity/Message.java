@@ -1,5 +1,7 @@
 package com.rakuten.internship.entity;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,20 +20,22 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-	@NotBlank
 	private Long room_id;
     
-    @NotBlank(message = "User is mandatory")
 //    @JoinColumn(name = "User_id")
 	@ManyToOne
 	private User user;
+    
+    @ManyToOne
+    private User userTo;
 
-	@NotBlank(message = "Description is mandatory")
 	@Column(name = "Content")
 	private String content;
 
-	@NotBlank
-	private String timestamp;
-
-
+	@Column(name = "timestamp")
+	private LocalDateTime timestamp;
+	
+	@Column(name = "private_message")
+	private boolean privateMessage;
+	
 }

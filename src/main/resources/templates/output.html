@@ -9,8 +9,7 @@
 </div>
 
     <h1>Search results</h1>
-    <div th:replace="/fragments/map :: map"></div>
-    <div id="map" style="width:480px; height:360px"></div>
+
     <form>
         <table>
 
@@ -35,6 +34,10 @@
         </tr>
     </table>
 </form>
+
+<div th:replace="/fragments/map :: map"></div>
+<div id="map" style="width:480px; height:360px"></div>
+
 <!--<div th:replace="/fragments/base :: footer"></div>-->
 <div th:replace="/fragments/base :: script-import"></div>
 </body>
