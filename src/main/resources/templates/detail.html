@@ -17,7 +17,7 @@
                 <img class="img-responsive" th:src="${'https://i.pravatar.cc/300/img=' + user.id}" >
             </td>
             <td>
-                User name: <span th:text="*{username}"></span><br>
+                Username: <span th:text="*{username}"></span><br>
                 Prefecture: <span th:text="*{city}"></span><br>
                 Age: <span th:text="*{birthdate}"></span><br>
             </td>
@@ -25,8 +25,8 @@
         </tr>
         <tr>
             <td>
-                <!-- TODO: change window.location.href url -->
-                <button type="button" th:onclick="'location.href= \' /search \''" class="btn btn-primary">Back</button>
+                <div><button type="button" th:onclick="'location.href= \' /search \''" class="btn btn-primary btn-lg">Contact</button></div>
+                <div><button type="button" th:onclick="'location.href= \' /message \''" class="btn-outline-primary btn-lg">Back</button></div>
             </td>
         </tr>
 
