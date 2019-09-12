@@ -4,7 +4,7 @@
 
 <!--HTML Head-->
 
-<div th:fragment="body">
+<div th:fragment="map">
     <script type="text/javascript" charset="utf-8" src="https://map.yahooapis.jp/js/V1/jsapi?appid=dj00aiZpPW9VQTdERlNES1JmcyZzPWNvbnN1bWVyc2VjcmV0Jng9ZGU-">
     </script>
 
@@ -12,6 +12,13 @@
         /*<![CDATA[*/
 
             var list = /*[[${users}]]*/;
+
+            console.log(list); //undefined when only USER
+
+
+<!--            if (users == null)-->
+<!--            then-->
+<!--            list = new list (user)-->
 
             var latitudes = [];
             var longitudes = [];
@@ -40,4 +47,6 @@
         /*]]>*/
     </script>
 </div>
+
+
 </html>
