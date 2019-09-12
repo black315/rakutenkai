@@ -14,7 +14,7 @@ public class Appointment {
 
     private User requester;
     private User requested;
-    private String data;
+    private String date;
     private String place;
     private String details;
     private Tag tag;
