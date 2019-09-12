@@ -42,10 +42,10 @@ public class UserController {
 
     @GetMapping("/search")
     public String search(Model model) {
-
-        List<User> users = userService.findUsers();
+        
+        //List<User> users = userService.findUsersByTag(tagService.findBytagId(senddata.tagId));
+        List<User> users = userService.findUsersFromCity("Osaka");
         model.addAttribute("users", users);
-        //TODO: Input the right View name
         return "output";
     }
 
