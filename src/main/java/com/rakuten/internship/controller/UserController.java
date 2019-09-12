@@ -89,14 +89,9 @@ public class UserController {
                                     ModelMap model) {
 
         //Verify if the user is correct
-//        List<User> AllUsers = userService.findUsers();
-//        System.out.println(user.getUsername());
-//        for(String a : AllUsers.name){
-//            if(a.equals(b)){
-//
-//                break;
-//            }
-//        }
+        List<User> AllUsers = userService.findUsers();
+        System.out.println(user.getUsername());
+//        String filepath = AllUsers.Find(x => x.name == 0);
 
         //todo: check with database
         login.setUserId(5);
