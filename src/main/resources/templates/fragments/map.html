@@ -4,7 +4,7 @@
 
 <!--HTML Head-->
 
-<div th:fragment="body">
+<div th:fragment="map">
     <script type="text/javascript" charset="utf-8" src="https://map.yahooapis.jp/js/V1/jsapi?appid=dj00aiZpPW9VQTdERlNES1JmcyZzPWNvbnN1bWVyc2VjcmV0Jng9ZGU-">
     </script>
 
@@ -13,33 +13,54 @@
 
             var list = /*[[${users}]]*/;
 
-            var latitudes = [];
-            var longitudes = [];
-            for (var i=0; i<list.length; i++){
-                latitudes.push(list[i].latitude);
-                longitudes.push(list[i].longitude);
-            }
+            if (list == null){
+                var user = /*[[${user}]]*/;
 
-            var latitude = (Math.max.apply(null, latitudes) + Math.min.apply(null, latitudes)) / 2;
-            var longitude = (Math.max.apply(null, longitudes) + Math.min.apply(null, longitudes)) / 2;
+                var latitude = user.latitude;
+                var longitude = user.longitude;
 
-            window.onload = function(){
-                var ymap = new Y.Map("map");
-                ymap.drawMap(new Y.LatLng(latitude, longitude), 17, Y.LayerSetId.NORMAL);
-                console.log("LOADED TEST PAGE");
+                window.onload = function(){
+                    var ymap = new Y.Map("map");
+                    ymap.drawMap(new Y.LatLng(latitude, longitude), 17, Y.LayerSetId.NORMAL);
+                    console.log("LOADED TEST PAGE");
 
-                for (var i=0; i<list.length; i++){
-                    var label = new Y.Label(new Y.LatLng(list[i].latitude, list[i].longitude), list[i].name);
+                    var label = new Y.Label(new Y.LatLng(user.latitude, user.longitude), user.name);
                     ymap.addFeature(label);
+
+                    var control = new Y.SliderZoomControlVertical();
+                    ymap.addControl(control);
+                }
+            }
+            else{
+                console.log("List is not null.");
+                var latitudes = [];
+                var longitudes = [];
+                for (var i=0; i<list.length; i++){
+                    latitudes.push(list[i].latitude);
+                    longitudes.push(list[i].longitude);
                 }
 
-                var control = new Y.SliderZoomControlVertical();
-                ymap.addControl(control);
+                var latitude = (Math.max.apply(null, latitudes) + Math.min.apply(null, latitudes)) / 2;
+                var longitude = (Math.max.apply(null, longitudes) + Math.min.apply(null, longitudes)) / 2;
+
+                window.onload = function(){
+                    var ymap = new Y.Map("map");
+                    ymap.drawMap(new Y.LatLng(latitude, longitude), 17, Y.LayerSetId.NORMAL);
+                    console.log("LOADED TEST PAGE");
+
+                    for (var i=0; i<list.length; i++){
+                        var label = new Y.Label(new Y.LatLng(list[i].latitude, list[i].longitude), list[i].name);
+                        ymap.addFeature(label);
+                    }
+
+                    var control = new Y.SliderZoomControlVertical();
+                    ymap.addControl(control);
+                }
             }
 
         /*]]>*/
     </script>
-
-    <div id="map" style="width:800px; height:600px"></div>
 </div>
+
+
 </html>
