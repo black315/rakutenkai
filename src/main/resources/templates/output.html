@@ -25,10 +25,13 @@
 
 <div th:replace="/fragments/base :: navbar">
 </div>
-<h1>Search results</h1>
-<!--    <div th:replace="/fragments/map :: body"></div>-->
-<form>
-    <table>
+
+    <h1>Search results</h1>
+    <div th:replace="/fragments/map :: map"></div>
+    <div id="map" style="width:480px; height:360px"></div>
+    <form>
+        <table>
+
         <tr th:each="user : ${users}" th:object="${user}">
             <td>
                 <img class="img-responsive" th:src="${'https://i.pravatar.cc/150/img=' + user.id}">

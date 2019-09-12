@@ -18,7 +18,7 @@
             <th>Full Name</th>
             <td>
                 <div>
-                    <input type="text" th:field="*{name}"/>
+                    <input type="text" class="form-control" style="height:30px; width: 300px" th:field="*{name}"/>
                 </div>
             </td>
         </tr>
@@ -26,7 +26,7 @@
             <th>Username</th>
             <td>
                 <div>
-                    <input type="text" th:field="*{username}"/>
+                    <input type="text" class="form-control" style="height:30px; width: 300px" th:field="*{username}"/>
                 </div>
             </td>
         </tr>
@@ -34,7 +34,7 @@
             <th>Date of Birth</th>
             <td>
                 <div>
-                    <input type="date" th:field="*{birthdate}" placeholder="YYYY/MM/DD"/>
+                    <input type="date" class="form-control" style="height:30px; width: 300px" th:field="*{birthdate}" placeholder="YYYY/MM/DD"/>
                 </div>
             </td>
         </tr>
@@ -42,7 +42,7 @@
             <th>Gender</th>
             <td>
                 <div>
-                    <select name="example" th:field="*{gender}">
+                    <select name="example" class="form-control" style="height:30px; width: 300px" th:field="*{gender}">
                         <option value="Man">Men</option>
                         <option value="Woman">Women</option>
                         <option value="Other">Other</option>
@@ -54,7 +54,7 @@
             <th>Main Language</th>
             <td>
                 <div>
-                    <select name="example" th:field="*{languages}">
+                    <select id="languages" name="languages" class="form-control" style="height:30px; width: 300px"  th:field="*{languages}">
                         <option value="Japanese">Japanese</option>
                         <option value="English">English</option>
                         <option value="Italia">Italia</option>
@@ -73,17 +73,38 @@
         <tr>
             <th>Country</th>
             <td>
-                <div>
-                    <input type="text" th:field="*{country}"/>
-                </div>
+                <select id="country" name="country" class="form-control" style="height:30px; width: 300px" th:field="*{country}">
+                    <option value="Japan">日本</option>
+                    <option value="Africa">Africa</option>
+                    <option value="Algeria">Algeria</option>
+                    <option value="Afghanistan">Afghanistan</option>
+                    <option value="Brazil">Brazil</option>
+                    <option value="China">China</option>
+                    <option value="Korea">Korea</option>
+                    <option value="Malaysia">Malaysia</option>
+                </select>
             </td>
         </tr>
         <tr>
             <th>City</th>
             <td>
-                <div>
-                    <input type="text" th:field="*{city}"/>
-                </div>
+                <select id="city" name="city" class="form-control" style="height:30px; width: 300px"  th:field="*{city}">
+                    <option value="Tokyo">東京</option>
+                    <option value="Sinjuku">新宿</option>
+                    <option value="Sibuya">渋谷</option>
+                    <option value="Harajuku">原宿</option>
+                    <option value="Ikebukuro">池袋</option>
+                    <option value="Akihabara">秋葉原</option>
+                    <option value="Sinagawa">品川</option>
+                    <option value="Yokohama">横浜</option>
+                    <option value="Nagoya">名古屋</option>
+                    <option value="Umeda">梅田</option>
+                    <option value="Namba">難波</option>
+                    <option value="Koube">神戸</option>
+                    <option value="Kyoto">京都</option>
+                    <option value="Okinawa">沖縄</option>
+                    <option value="Hokkaido">北海道</option>
+                </select>
             </td>
         </tr>
         <tr>
@@ -96,21 +117,29 @@
                             <input type="file" style="display:none"/>
                         </div>
                     </label>
-                    <input type="text" />
+                    <!-- <input type="text" /> -->
                 </div>
             </td>
         </tr>
         <tr>
             <th>Self introduction</th>
             <td>
-                <div>
-                    <input type="text" th:field="*{selfIntroduction}"/>
+                <div style="height:150px; width: 800px">
+                    <input type="text"  class="form-control" style="height:145px; width: 700px" th:field="*{selfIntroduction}"/>
                 </div>
             </td>
         </tr>
+        <tr>
+            <th>What you can help</th>
+            <td>
+                <select id="singleSelect" name="selectedItem" class="form-control" style="height:30px; width: 300px"  th:field="*{tags}">
+                    <option th:each="tags : ${tags}" th:value="${tags.tagId}" th:text="${tags.name}" th:selected="${tags.name} == *{tags}" >singleSelect</option>
+                </select>
+            </td>
+        </tr>
     </table>
-    <button type="submit" class="btn btn-primary">Sign up</button>
-    <button>Cancel</button>
+    <button type="submit" class="btn btn-success">Sign up</button>
+    <button type="submit" class="btn btn-secondary">Cancel</button>
 </form>
 
 <!--<div th:replace="/fragments/base :: footer"></div>-->
