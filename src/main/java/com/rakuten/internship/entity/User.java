@@ -43,6 +43,7 @@ public class User {
 	private List<Tag> tags;
 
 	private String country;
+	private String password; //This has to be encrypted
 	private String city;
 	private String username;
 	private String role;
