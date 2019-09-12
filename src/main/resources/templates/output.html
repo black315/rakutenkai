@@ -39,7 +39,8 @@
                 Age: <span th:text="${user.getAge()}"></span><br>
 <!--                Can help with: <span th:each=" tag, tStat : *{tags}" th:text="${tag.name} + ' '" ></span><br>-->
 <!--                Can help with: <span th:each=" tag, tStat : *{tags}" th:text="${tStat.index == 2}? 'and more' : ${tag.name} + ', '" th:unless="${tStat.index > 2}" ></span><br>-->
-                Can help with: <span class="tag" th:each=" tag, tStat : *{tags}" th:text="${tStat.index >= 1}? (${tStat.index == 3}? ', and more' : ', ' + ${tag.name}) : ${tag.name}" th:unless="${tStat.index > 3}" ></span><br>
+<!--                Can help with: <span th:each=" tag, tStat : *{tags}" th:class="${tStat.index == 2}? 'tag'" th:text="${tStat.index >= 1}? (${tStat.index == 2}? ', and more' : ', ' + ${tag.name}) : ${tag.name}" th:unless="${tStat.index > 2}" ></span><br>-->
+                Can help with: <span th:each=" tag, tStat : *{tags}" th:text="${tStat.index >= 1}? (${tStat.index == 2}? ', and more' : ', ' + ${tag.name}) : ${tag.name}" th:unless="${tStat.index > 2}" ></span><br>
             </td>
             <td>
                 <button type="button" th:onclick="'window.location.href=\'/user/' +  *{id} + '\''"
