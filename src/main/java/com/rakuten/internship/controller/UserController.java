@@ -6,21 +6,26 @@ import com.rakuten.internship.service.LocationService;
 import com.rakuten.internship.service.TagService;
 import com.rakuten.internship.service.UserService;
 import com.rakuten.internship.util.AgeUtil;
+import com.rakuten.internship.session.LogIn;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import sun.tools.tree.NewArrayExpression;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
 public class UserController {
+
+    LogIn login = new LogIn();
 	
     @Autowired
     private LocationService locationService;
@@ -79,14 +84,43 @@ public class UserController {
         return "complete";
     }
 
+    @RequestMapping(value = "/user", method = POST)
+    public String viewDetailsSignIn(@ModelAttribute User user,
+                                    ModelMap model) {
+
+        //Verify if the user is correct
+//        List<User> AllUsers = userService.findUsers();
+//        System.out.println(user.getUsername());
+//        for(String a : AllUsers.name){
+//            if(a.equals(b)){
+//
+//                break;
+//            }
+//        }
+
+        //todo: check with database
+        login.setUserId(5);
+
+        return "redirect:/user/" + login.getV_userId();
+    }
+
     @RequestMapping(value = "/user/{id}", method = GET)
     public String viewDetails(Model model, @PathVariable("id") Integer id){
         //get the ID value
         //Lookup that user in the DB to get the object
         //set that object to the model
         //return the view name
-        model.addAttribute("user", userService.findUserById(id));
-        return "detail";
+
+        login.setV_userId(id); //Store the ID fo the user you want to see
+
+        if (login.getUserId() == null) { //If not signed in....
+            model.addAttribute("user", new User());
+            return "sign_in";
+        }
+        else { //If signed in, show the requested user...
+            model.addAttribute("user", userService.findUserById(id));
+            return "detail";
+        }
     }
 }
 
