@@ -22,10 +22,8 @@ public class MessageController {
 	
     @GetMapping("/contact")
     public String contact(@ModelAttribute ContactForm contactForm, Model model){
-    	List<Message> messages = messageRepositoy.findByUserIds(1, 2);
-        //List<Message> messages = messageRepositoy.findByUserIds(contactForm.getIdFrom(), contactForm.getIdTo());
-    	model.addAttribute("id", 1);
-        //model.addAttribute("id", contactForm.getIdFrom());
+        List<Message> messages = messageRepositoy.findByUserIds(contactForm.getIdFrom(), contactForm.getIdTo());
+        model.addAttribute("id", contactForm.getIdFrom());
     	model.addAttribute("messages", messages);
     	return "contact";
     }
