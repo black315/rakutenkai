@@ -34,10 +34,10 @@
 </div>
 
 <form class="send-form" th:action="@{/message/send}" th:object="${message}" method="post">
-  <input type="text" name="content" class="float-left">
+  <input id="newMessage" type="text" name="content" class="float-left" maxlength="100">
   <input type="hidden" name="user" th:value="${messages[0].user.id == id ? messages[0].user.id : messages[0].userTo.id}">
   <input type="hidden" name="userTo" th:value="${messages[0].user.id == id ? messages[0].userTo.id : messages[0].user.id}">
-  <button id="btn" class="btn btn-primary">Send</button>
+  <button id="btn" class="btn btn-primary" disabled="true">Send</button>
 </form>
 
 <div th:replace="/fragments/base :: footer"></div>
@@ -45,6 +45,16 @@
 <div th:replace="/fragments/base :: script-import"></div>
 
 <script type="text/javascript" th:inline="javascript">
+  $(function(){
+    $("#newMessage").on("keyup", function() {
+      if ($(this).val().length === 0) {
+        $("#btn").prop("disabled", true);
+      } else {
+        $("#btn").prop("disabled", false);
+      }
+    });
+  });
+
   var $scrollTable = $("#scrollTable");
   var scrollTo = $scrollTable.get(0).scrollHeight - $scrollTable.height();
   $(window).on("load", function() { $("#scrollTable").scrollTop(scrollTo); });
