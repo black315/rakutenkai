@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import sun.tools.tree.NewArrayExpression;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -88,8 +89,15 @@ public class UserController {
                                     ModelMap model) {
 
         //Verify if the user is correct
+//        List<User> AllUsers = userService.findUsers();
+//        System.out.println(user.getUsername());
+//        for(String a : AllUsers.name){
+//            if(a.equals(b)){
+//
+//                break;
+//            }
+//        }
 
-        System.out.println(user.getUsername());
         //todo: check with database
         login.setUserId(5);
 
