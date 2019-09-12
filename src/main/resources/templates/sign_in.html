@@ -1,0 +1,41 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="/fragments/base :: head">
+</head>
+
+<body>
+
+<div th:replace="/fragments/base :: navbar">
+</div>
+
+<h1>
+    Sign up your profile
+</h1>
+
+<form th:action="@{/LogIn}" th:object="${user}" method="post">
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>Username</th>
+            <td>
+                <div>
+                    <input type="text" th:field="*{username}"/>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Password</th>
+            <td>
+                <div>
+                    <input type="text" th:field="*{password}"/>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <button type="submit" class="btn btn-primary">Sign in</button>
+    <button>Cancel</button>
+</form>
+
+<!--<div th:replace="/fragments/base :: footer"></div>-->
+<div th:replace="/fragments/base :: script-import"></div>
+</body>
+</html>
