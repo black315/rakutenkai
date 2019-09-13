@@ -25,6 +25,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 public class UserController {
     @Autowired
     private LogIn login;
+
 	
     @Autowired
     private LocationService locationService;
@@ -91,7 +92,7 @@ public class UserController {
 
         user.setBirthdate(user.getBirthdate().replace("-","/")); //Fix to insert the correct format
         user.setRole("USER");
-        user.setPassword("$2a$10$BB1J66T/3kMcmidDah0R7OJtycBKlvJObNsW0DuSHYOoXmsVTt3bK");
+        user.setPassword("1234");
         userService.save(user);
         return "complete";
     }
@@ -102,8 +103,6 @@ public class UserController {
 
         //Verify if the user is correct
         List<User> HitUsers = userService.findUsersFromUsername(user.getUsername());
-//        System.out.println(user.getUsername());
-//        System.out.println(user.getPassword());
 
         for(int i = 0; i < HitUsers.size(); i++){
             User find_user = HitUsers.get(i);
@@ -111,7 +110,12 @@ public class UserController {
             {
                 login.setUserId(find_user.getId());
                 if (login.getV_userId() == null){
-                    return "redirect:/user/";
+                    if (login.getLink_before() == 1) { //Appointment list
+                        return "redirect:/appointmentList";
+                    }
+                    else {
+                        return "redirect:/user/";
+                    }
                 }
                 return "redirect:/user/" + login.getV_userId();
             }
