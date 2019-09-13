@@ -11,12 +11,12 @@ CREATE TABLE IF NOT EXISTS lang(
 );
 INSERT INTO USER (NAME, COUNTRY, USERNAME, CITY, GENDER, PICTURE_URL, RATING,  ROLE, BIRTHDATE, SELF_INTRODUCTION, LATITUDE, LONGITUDE, PASSWORD) VALUES
 
-('John Crom', 'Japan', 'john.crom', 'Osaka', 'Male', 'url', 3, 'USER', '2000/07/10', 'About John', 34.703715, 135.494137, '$2a$10$BB1J66T/3kMcmidDah0R7OJtycBKlvJObNsW0DuSHYOoXmsVTt3bK'),
-('Carla Pike', 'United States of America', 'carla.pike', 'Osaka', 'Female', 'url', 3, 'USER', '2000/07/10', 'About Carla', 34.703582, 135.496104,'$2a$10$BB1J66T/3kMcmidDah0R7OJtycBKlvJObNsW0DuSHYOoXmsVTt3bK'),
-('Thomas Fenmoy', 'Vietnam', 'thomas.fenmoy', 'Osaka', 'Male', 'url', 3, 'USER', '2000/07/10', 'About Thomas', 34.702171, 135.497381,'$2a$10$BB1J66T/3kMcmidDah0R7OJtycBKlvJObNsW0DuSHYOoXmsVTt3bK'),
-('Doraemon', 'Japan', 'anpan.man', 'Tokyo', 'Male', 'url', 3, 'USER', '2000/07/10', 'About Doraemon', 35.681876, 139.769252,'$2a$10$BB1J66T/3kMcmidDah0R7OJtycBKlvJObNsW0DuSHYOoXmsVTt3bK'),
-('Gopher', 'Japan', 'go.lang', 'Tokyo', 'Male', 'url', 3, 'USER', '2000/07/10', 'About Gopher', 35.679580, 139.764515,'$2a$10$BB1J66T/3kMcmidDah0R7OJtycBKlvJObNsW0DuSHYOoXmsVTt3bK'),
-('Carl Times', 'Japan', 'carl.times', 'Nagoya', 'Male', 'url', 3, 'USER', '1998/07/10', 'Likes Languages and music', 35.170519, 136.880218,'$2a$10$BB1J66T/3kMcmidDah0R7OJtycBKlvJObNsW0DuSHYOoXmsVTt3bK');
+('John Crom', 'Japan', 'john.crom', 'Osaka', 'Male', 'url', 3, 'USER', '2000/07/10', 'About John', 34.703715, 135.494137, '1234'),
+('Carla Pike', 'United States of America', 'carla.pike', 'Osaka', 'Female', 'url', 3, 'USER', '2000/07/10', 'About Carla', 34.703582, 135.496104,'1234'),
+('Thomas Fenmoy', 'Vietnam', 'thomas.fenmoy', 'Osaka', 'Male', 'url', 3, 'USER', '2000/07/10', 'About Thomas', 34.702171, 135.497381,'1234'),
+('Doraemon', 'Japan', 'anpan.man', 'Tokyo', 'Male', 'url', 3, 'USER', '2000/07/10', 'About Doraemon', 35.681876, 139.769252,'1234'),
+('Gopher', 'Japan', 'go.lang', 'Tokyo', 'Male', 'url', 3, 'USER', '2000/07/10', 'About Gopher', 35.679580, 139.764515,'1234'),
+('Carl Times', 'Japan', 'carl.times', 'Nagoya', 'Male', 'url', 3, 'USER', '1998/07/10', 'Likes Languages and music', 35.170519, 136.880218,'1234');
 
 INSERT INTO TAG (NAME) VALUES
 ('Medical support'),
@@ -66,5 +66,5 @@ INSERT INTO MESSAGE (USER_ID, USER_TO_ID, CONTENT, TIMESTAMP, PRIVATE_MESSAGE) V
  (2, 1, 'Hi', '2019-09-12 10:05:27', false),
  (1, 2, 'How are you?', '2019-09-12 10:05:30', false),
  (3, 1, 'Good morning', '2019-09-12 10:07:00', false),
- (1, 2, 'aaaaaaaaaa', '2019-09-12 10:08:17', false);
+ (1, 2, 'Please help me!!', '2019-09-12 10:08:17', false);
 
