@@ -11,8 +11,8 @@
 </div>
 
 <div class="container">
-  <h1>Message</h1>
-  <div id="scrollTable" style="height: 300px; overflow-y: scroll;">
+  <h1 class="text-center">Message</h1>
+  <div id="scrollTable" style="height: 400px; overflow-y: scroll;">
     <table style="table-layout: fixed; width: 100%;">
       <tr th:each="message : ${messages}">
         <th:block th:if="${message.user.id == idFrom}">
