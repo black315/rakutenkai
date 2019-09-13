@@ -7,7 +7,7 @@ body {
 
 
 .main-content {
-    max-width: 80%;
+    max-width: 88%;
     margin: auto;
     //background
     //padding: 10px;
@@ -44,4 +44,8 @@ h1 {
 .tag {
     font-weight: bold;
     color: teal;
+}
+
+.img-responsive {
+    margin-right: 50px;
 }

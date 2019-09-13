@@ -3,44 +3,57 @@
 <head th:replace="/fragments/base :: head">
 </head>
 
+<link rel="stylesheet" th:href="@{/css/message.css}">
+
 <body>
 
 <div th:replace="/fragments/base :: navbar">
 </div>
 
-<h1>Message</h1>
+<div class="container">
+  <h1 class="text-center">Message</h1>
+  <div id="scrollTable" style="height: 400px; overflow-y: scroll;">
+    <table style="table-layout: fixed; width: 100%;">
+      <tr th:each="message : ${messages}">
+        <th:block th:if="${message.user.id == idFrom}">
+          <div class="outgoing_msg">
+            <td align="right">
+              <div class="sent_msg">
+                <p th:text="${message.content}"></p>
+                <span class="time_date" th:text="${#temporals.format(message.timestamp, 'HH:mm')}"></span>
+              </div>
+            </td>
+          </div>
+        </th:block>
+        <th:block th:unless="${message.user.id == idFrom}">
+          <div class="incoming_msg">
+            <td>
+              <div class="incoming_msg_img">
+              <img class="img-responsive" th:src="${'https://i.pravatar.cc/150?img=' + message.user.id}">
+              </div>
+              <div class="received_msg">
+                <div class="received_withd_msg">
+                  <span class="time_date" th:text="${message.user.name}"></span>
+                  <p th:text="${message.content}"></p>
+                  <span class="time_date" th:text="${#temporals.format(message.timestamp, 'HH:mm')}"></span>
+                </div>
+              </div>
+            </td>
+          </div>
+        </th:block>
+      </tr>
+    </table>
+  </div>
 
-<div id="scrollTable" style="height: 500px; overflow-y: scroll;">
-  <table style="table-layout: fixed; width: 100%;">
-    <tr th:each="message : ${messages}">
-      <th:block th:if="${message.user.id == idFrom}">
-        <td align="right">
-          <img class="img-responsive" th:src="${'https://i.pravatar.cc/150/img=' + message.user.id}" style="width: 150px; height: 150px;" >
-          <div th:text="${message.user.name}"></div>
-          <div th:text="${message.content}"></div>
-          <div th:text="${#temporals.format(message.timestamp, 'HH:mm')}"></div>
-        </td>
-      </th:block>
-      <th:block th:unless="${message.user.id == idFrom}">
-        <td align="left">
-          <img class="img-responsive" th:src="${'https://i.pravatar.cc/150/img=' + message.user.id}" style="width: 150px; height: 150px;" >
-          <div th:text="${message.user.name}"></div>
-          <div th:text="${message.content}"></div>
-          <div th:text="${#temporals.format(message.timestamp, 'HH:mm')}"></div>
-        </td>
-      </th:block>
-    </tr>
-  </table>
+  <form class="type_msg" th:action="@{/message/send}" th:object="${message}" method="post">
+    <div class="input_msg_write">
+      <input id="newMessage" type="text" name="content" class="write_msg" maxlength="100" placeholder="Type a message">
+      <input type="hidden" name="user" th:value="${idFrom}">
+      <input type="hidden" name="userTo" th:value="${idTo}">
+      <button id="btn" class="msg_send_btn" disabled="true">Send</button>
+    </div>
+  </form>
 </div>
-
-<form class="send-form" th:action="@{/message/send}" th:object="${message}" method="post">
-  <input id="newMessage" type="text" name="content" class="float-left" maxlength="100">
-  <input type="hidden" name="user" th:value="${idFrom}">
-  <input type="hidden" name="userTo" th:value="${idTo}">
-  <button id="btn" class="btn btn-primary" disabled="true">Send</button>
-</form>
-
-<div th:replace="/fragments/base :: footer"></div>
 
 <div th:replace="/fragments/base :: script-import"></div>
 
