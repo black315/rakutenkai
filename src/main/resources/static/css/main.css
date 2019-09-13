@@ -45,3 +45,7 @@ h1 {
     font-weight: bold;
     color: teal;
 }
+
+.img-responsive {
+    margin-right: 50px;
+}

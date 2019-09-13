@@ -12,7 +12,7 @@
     <h1 class="text-center">Search results</h1>
 
     <form>
-        <table>
+        <table align="center">
             <tr th:each="user : ${users}" th:object="${user}">
                 <td>
                     <img class="img-responsive" th:src="${'https://i.pravatar.cc/150?img=' + user.id}">
@@ -30,7 +30,7 @@
                 </td>
                 <td>
                     <button type="button" th:onclick="'window.location.href=\'/user/' +  *{id} + '\''"
-                            class="btn btn-primary">View Details
+                            class="btn btn-primary" style="margin-left: 50px;">View Details
                     </button>
                 </td>
             </tr>
