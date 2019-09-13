@@ -10,8 +10,6 @@
 
 <h1>Appointment page</h1>
 
-<!--<form method="post" th:action="'@{/user/' + ${appointment.get(0).requested.id} + '}'">-->
-<!--<form method="post" th:action="@{/user/}" th:object="${appointment}">-->
 <form method="get" th:action="@{'/user/' + ${appointment.get(0).requested.id}}" th:object="${appointment}">
     <h2 th:text="${'Appointment with ' + appointment.get(0).requested.name}"></h2>
     <table>
@@ -32,7 +30,6 @@
 </form>
 
 
-<!--<div th:replace="/fragments/base :: footer"></div>-->
 <div th:replace="/fragments/base :: script-import"></div>
 </body>
 </html>

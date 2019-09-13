@@ -10,15 +10,9 @@
 
 <h1 class="text-center" th:text="'Hi, ' + ${name} + '! These are your appointments'"></h1>
 <br>
-<!--<h1 th:object="${appointments} th:if="${appointments.get(0)!=null}">aa</span></h1>-->
-<!--<h1 th:object="${appointments}"><span th:text="${appointments.get(0).requester.name + '''s Profile'}"></span></h1>-->
-
-<!--<form method="post" th:action="'@{/user/' + ${appointment.get(0).requested.id} + '}'">-->
-<!--<form method="post" th:action="@{/user/}" th:object="${appointment}">-->
 
 <div class="main-content">
     <form method="get" th:action="@{/}">
-        <!--    <h2 th:text="${'Appointment with ' + appointments.get(0).requested.name}"></h2>-->
         <table style="width:100%">
             <tr th:each="appointment : ${appointments}" th:object="${appointment}">
                 <td>
@@ -43,7 +37,6 @@
     </form>
 </div>
 
-<!--<div th:replace="/fragments/base :: footer"></div>-->
 <div th:replace="/fragments/base :: script-import"></div>
 </body>
 </html>

@@ -21,9 +21,6 @@
                     Name: <span th:text="*{name}"></span><br>
                     Location: <span th:text="*{country} + ' - ' + *{city}"></span><br>
                     Age: <span th:text="${user.getAge()}"></span><br>
-                    <!--                Can help with: <span th:each=" tag, tStat : *{tags}" th:text="${tag.name} + ' '" ></span><br>-->
-                    <!--                Can help with: <span th:each=" tag, tStat : *{tags}" th:text="${tStat.index == 2}? 'and more' : ${tag.name} + ', '" th:unless="${tStat.index > 2}" ></span><br>-->
-                    <!--                Can help with: <span th:each=" tag, tStat : *{tags}" th:class="${tStat.index == 2}? 'tag'" th:text="${tStat.index >= 1}? (${tStat.index == 2}? ', and more' : ', ' + ${tag.name}) : ${tag.name}" th:unless="${tStat.index > 2}" ></span><br>-->
                     Can help with: <span th:each=" tag, tStat : *{tags}"
                                          th:text="${tStat.index >= 1}? (${tStat.index == 2}? ', and more' : ', ' + ${tag.name}) : ${tag.name}"
                                          th:unless="${tStat.index > 2}"></span><br>
@@ -38,11 +35,9 @@
     </form>
     <br>
     <div th:replace="/fragments/map :: map"></div>
-<!--    <div id="map" style="width:480px; height:360px"></div>-->
     <div id="map" style="width:100%; height:360px"></div>
 </div>
 
-<!--<div th:replace="/fragments/base :: footer"></div>-->
 <div th:replace="/fragments/base :: script-import"></div>
 
 </body>
