@@ -91,6 +91,7 @@ public class UserController {
 
         user.setBirthdate(user.getBirthdate().replace("-","/")); //Fix to insert the correct format
         user.setRole("USER");
+        user.setPassword("$2a$10$BB1J66T/3kMcmidDah0R7OJtycBKlvJObNsW0DuSHYOoXmsVTt3bK");
         userService.save(user);
         return "complete";
     }
