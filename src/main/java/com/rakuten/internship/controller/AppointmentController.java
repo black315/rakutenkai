@@ -42,11 +42,11 @@ public class AppointmentController {
 
     @GetMapping("/appointmentList")
     public String getAppointmentList(Model model){
-        System.out.println("hello");
 
         Integer requesterId = login.getUserId();
         System.out.println(requesterId);
-        if (requesterId == null){
+
+        if (requesterId == null) {
             model.addAttribute("user", new User());
             login.setLink_before(1);
             return "sign_in";
@@ -57,6 +57,7 @@ public class AppointmentController {
         User requester = userService.findUserById(requesterId);
 
         appointments = appointmentService.findAppointmentsByRequester(requester);
+        model.addAttribute("name", requester.getName());
         model.addAttribute("appointments", appointments);
 
         return "appointment_list";

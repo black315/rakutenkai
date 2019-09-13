@@ -8,32 +8,40 @@
 <div th:replace="/fragments/base :: navbar">
 </div>
 
-<h1>Appointment list page</h1>
+<h1 class="text-center" th:text="'Hi, ' + ${name} + '! These are your appointments'"></h1>
+<br>
 <!--<h1 th:object="${appointments} th:if="${appointments.get(0)!=null}">aa</span></h1>-->
 <!--<h1 th:object="${appointments}"><span th:text="${appointments.get(0).requester.name + '''s Profile'}"></span></h1>-->
 
 <!--<form method="post" th:action="'@{/user/' + ${appointment.get(0).requested.id} + '}'">-->
 <!--<form method="post" th:action="@{/user/}" th:object="${appointment}">-->
-<form method="get" th:action="@{/}">
-<!--    <h2 th:text="${'Appointment with ' + appointments.get(0).requested.name}"></h2>-->
-    <table>
-        <tr th:each="appointment : ${appointments}" th:object="${appointment}">
-            <td>
-                <img class="img-responsive" th:src="${'https://i.pravatar.cc/150?img=' + appointment.requested.id}">
-            </td>
-            <td>
-                Name: <span th:text="${appointment.requested.name}"></span><br>
-                Date: <span th:text="${appointment.date}"></span><br>
-                Place: <span th:text="${appointment.city} + ' - ' + ${appointment.place}"></span><br>
-                Problem: <span th:text="${appointment.tag.name}"></span><br>
-                Detail: <span th:text="${appointment.details}"></span><br>
-            </td>
-        </tr>
-    </table>
 
-    <button class="btn btn-secondary">Home</button>
-</form>
+<div class="main-content">
+    <form method="get" th:action="@{/}">
+        <!--    <h2 th:text="${'Appointment with ' + appointments.get(0).requested.name}"></h2>-->
+        <table style="width:100%">
+            <tr th:each="appointment : ${appointments}" th:object="${appointment}">
+                <td>
+                    <img class="img-responsive" th:src="${'https://i.pravatar.cc/150?img=' + appointment.requested.id}">
+                </td>
+                <td>
+                    <strong> Appointment with <span th:text="${appointment.requested.name}"></span></strong>
+                    <br>
+                    <br>
+                    Date: <span th:text="${appointment.date}"></span><br>
+                    Place: <span th:text="${appointment.city} + ' - ' + ${appointment.place}"></span><br>
+                    Problem: <span th:text="${appointment.tag.name}"></span><br>
+                    Detail: <span th:text="${appointment.details}"></span><br>
+                </td>
+            </tr>
+        </table>
 
+        <br>
+        <button type="button" class="btn btn-outline-primary btn-lg btn-block" onclick="location.href='/'">
+            Back
+        </button>
+    </form>
+</div>
 
 <!--<div th:replace="/fragments/base :: footer"></div>-->
 <div th:replace="/fragments/base :: script-import"></div>
