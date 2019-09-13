@@ -25,6 +25,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 public class UserController {
     @Autowired
     private LogIn login;
+
 	
     @Autowired
     private LocationService locationService;
@@ -111,6 +112,7 @@ public class UserController {
                 login.setUserId(find_user.getId());
                 if (login.getV_userId() == null){
                     return "redirect:/user/";
+//                    return "redirect:/appointmentList";
                 }
                 return "redirect:/user/" + login.getV_userId();
             }

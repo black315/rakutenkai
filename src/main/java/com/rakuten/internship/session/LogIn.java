@@ -13,6 +13,7 @@ public class LogIn {
 
     private Integer userId;
 
-
     private Integer v_userId;
+
+    private Integer link_before;  //1:appointment, 0:other
 }

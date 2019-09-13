@@ -9,6 +9,8 @@
 </div>
 
 <h1>Appointment list page</h1>
+<!--<h1 th:object="${appointments} th:if="${appointments.get(0)!=null}">aa</span></h1>-->
+<!--<h1 th:object="${appointments}"><span th:text="${appointments.get(0).requester.name + '''s Profile'}"></span></h1>-->
 
 <!--<form method="post" th:action="'@{/user/' + ${appointment.get(0).requested.id} + '}'">-->
 <!--<form method="post" th:action="@{/user/}" th:object="${appointment}">-->
@@ -17,9 +19,10 @@
     <table>
         <tr th:each="appointment : ${appointments}" th:object="${appointment}">
             <td>
-                <img class="img-responsive" th:src="${'https://i.pravatar.cc/150/img=' + appointment.requested.id}">
+                <img class="img-responsive" th:src="${'https://i.pravatar.cc/150?img=' + appointment.requested.id}">
             </td>
             <td>
+                Name: <span th:text="${appointment.requested.name}"></span><br>
                 Date: <span th:text="${appointment.date}"></span><br>
                 Place: <span th:text="${appointment.city} + ' - ' + ${appointment.place}"></span><br>
                 Problem: <span th:text="${appointment.tag.name}"></span><br>

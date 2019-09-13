@@ -48,6 +48,7 @@ public class AppointmentController {
         System.out.println(requesterId);
         if (requesterId == null){
             model.addAttribute("user", new User());
+            login.setLink_before(1);
             return "sign_in";
         }
 
