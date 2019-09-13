@@ -1,0 +1,76 @@
+{
+  "metadata": {
+    "name": "rakutenkai-presentation"
+  },
+  "projects": [
+    {
+      "name": "rakutenkai",
+      "source": {
+        "location": "https://github.com/apine-dev/rakutenkai.git",
+        "type": "git"
+      }
+    }
+  ],
+  "attributes": {
+    "persistVolumes": "true"
+  },
+  "components": [
+    {
+      "id": "redhat/java/latest",
+      "memoryLimit": "1512Mi",
+      "type": "chePlugin"
+    },
+    {
+      "mountSources": true,
+      "endpoints": [
+        {
+          "name": "8080/tcp",
+          "port": 8080
+        }
+      ],
+      "memoryLimit": "768Mi",
+      "type": "dockerimage",
+      "volumes": [
+        {
+          "name": "m2",
+          "containerPath": "/home/user/.m2"
+        }
+      ],
+      "alias": "tools",
+      "image": "quay.io/eclipse/che-java8-maven:nightly",
+      "env": [
+        {
+          "value": "-XX:MaxRAMPercentage=50.0 -XX:+UseParallelGC -XX:MinHeapFreeRatio=10 -XX:MaxHeapFreeRatio=20 -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xms20m -Djava.security.egd=file:/dev/./urandom -Duser.home=/home/user",
+          "name": "JAVA_OPTS"
+        },
+        {
+          "value": "$(JAVA_OPTS)",
+          "name": "MAVEN_OPTS"
+        }
+      ]
+    }
+  ],
+  "apiVersion": "1.0.0",
+  "commands": [
+    {
+      "name": "maven build",
+      "actions": [
+        {
+          "workdir": "${CHE_PROJECTS_ROOT}/rakutenkai",
+          "type": "exec",
+          "command": "mvn spring-boot:run",
+          "component": "tools"
+        }
+      ]
+    },
+    {
+      "name": "Debug remote java application",
+      "actions": [
+        {
+          "referenceContent": "{\n\"version\": \"0.2.0\",\n\"configurations\": [\n  {\n    \"type\": \"java\",\n    \"name\": \"Debug (Attach) - Remote\",\n    \"request\": \"attach\",\n    \"hostName\": \"localhost\",\n    \"port\": 5005\n  }]\n}\n",
+          "type": "vscode-launch"
+        }
+      ]
+    }
+  ]
+}
