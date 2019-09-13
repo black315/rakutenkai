@@ -55,7 +55,7 @@
         </select>
         to help me with
         <select id="singleSelect" name="selectedItem">
-            <option value="">Choose a problem</option>
+            <option value="">Choose a problem...</option>
             <option th:each="tags : ${tags}" th:value="${tags.tagId}" th:text="${tags.name}"
                     th:selected="${tags.name} == *{selectedItem}">singleSelect
             </option>

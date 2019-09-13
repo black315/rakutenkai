@@ -15,144 +15,154 @@
 <div th:replace="/fragments/base :: navbar">
 </div>
 
-<h1>
-    Sign up your profile
+<h1 class="text-center">
+    Create your profile
 </h1>
 
-<form th:action="@{/register}" th:object="${user}" method="post">
-    <table class="table table-bordered table-hover">
-        <tr>
-            <th>Full Name</th>
-            <td>
-                <div>
-                    <input type="text" class="form-control" style="height:30px; width: 300px" th:field="*{name}"/>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <th>Username</th>
-            <td>
-                <div>
-                    <input type="text" class="form-control" style="height:30px; width: 300px" th:field="*{username}"/>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <th>Date of Birth</th>
-            <td>
-                <div>
-                    <input type="date" class="form-control" style="height:30px; width: 300px" th:field="*{birthdate}" placeholder="YYYY/MM/DD"/>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <th>Gender</th>
-            <td>
-                <div>
-                    <select name="example" class="form-control" style="height:30px; width: 300px" th:field="*{gender}">
-                        <option value="Man">Men</option>
-                        <option value="Woman">Women</option>
-                        <option value="Other">Other</option>
+<div class="main-content">
+    <form th:action="@{/register}" th:object="${user}" method="post">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>Full Name</th>
+                <td>
+                    <div>
+                        <input type="text" placeholder="Full name" class="form-control" style="height:30px; width: 300px" th:field="*{name}"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>
+                    <div>
+                        <input type="text" placeholder="Desired username" class="form-control" style="height:30px; width: 300px" th:field="*{username}"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Date of Birth</th>
+                <td>
+                    <div>
+                        <input type="date" class="form-control" style="height:30px; width: 300px" th:field="*{birthdate}" placeholder="YYYY/MM/DD"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>
+                    <div>
+                        <select name="example" class="form-control" style="height:30px; width: 300px" th:field="*{gender}">
+                            <option value="Man">Men</option>
+                            <option value="Woman">Women</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Main Language</th>
+                <td>
+                    <div>
+                        <select id="languages" name="languages" class="form-control" style="height:30px; width: 300px"  th:field="*{languages}">
+                            <option value="Japanese">Japanese</option>
+                            <option value="English">English</option>
+                            <option value="Italia">Italia</option>
+                            <option value="French">French</option>
+                            <option value="Chinese">Chinese</option>
+                            <option value="Korean">Korean</option>
+                            <option value="Spanish">Spanish</option>
+                            <option value="Hindi">Hindi</option>
+                            <option value="Malay">Malay</option>
+                            <option value="Russian">Russian</option>
+                            <option value="Portugese">Portuguese</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>
+                    <select id="country" name="country" class="form-control" style="height:30px; width: 300px" th:field="*{country}">
+                        <option value="Japan">日本</option>
+                        <option value="Africa">Africa</option>
+                        <option value="Algeria">Algeria</option>
+                        <option value="Afghanistan">Afghanistan</option>
+                        <option value="Brazil">Brazil</option>
+                        <option value="China">China</option>
+                        <option value="Korea">Korea</option>
+                        <option value="Malaysia">Malaysia</option>
                     </select>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <th>Main Language</th>
-            <td>
-                <div>
-                    <select id="languages" name="languages" class="form-control" style="height:30px; width: 300px"  th:field="*{languages}">
-                        <option value="Japanese">Japanese</option>
-                        <option value="English">English</option>
-                        <option value="Italia">Italia</option>
-                        <option value="French">French</option>
-                        <option value="Chinese">Chinese</option>
-                        <option value="Korean">Korean</option>
-                        <option value="Spanish">Spanish</option>
-                        <option value="Hindi">Hindi</option>
-                        <option value="Malay">Malay</option>
-                        <option value="Russian">Russian</option>
-                        <option value="Portugese">Portuguese</option>
+                </td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>
+                    <select id="city" name="city" class="form-control" style="height:30px; width: 300px"  th:field="*{city}">
+                        <option value="Tokyo">東京</option>
+                        <option value="Osaka">大阪</option>
+                        <option value="Sinjuku">新宿</option>
+                        <option value="Sibuya">渋谷</option>
+                        <option value="Harajuku">原宿</option>
+                        <option value="Ikebukuro">池袋</option>
+                        <option value="Akihabara">秋葉原</option>
+                        <option value="Sinagawa">品川</option>
+                        <option value="Yokohama">横浜</option>
+                        <option value="Nagoya">名古屋</option>
+                        <option value="Umeda">梅田</option>
+                        <option value="Namba">難波</option>
+                        <option value="Koube">神戸</option>
+                        <option value="Kyoto">京都</option>
+                        <option value="Okinawa">沖縄</option>
+                        <option value="Hokkaido">北海道</option>
                     </select>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <th>Country</th>
-            <td>
-                <select id="country" name="country" class="form-control" style="height:30px; width: 300px" th:field="*{country}">
-                    <option value="Japan">日本</option>
-                    <option value="Africa">Africa</option>
-                    <option value="Algeria">Algeria</option>
-                    <option value="Afghanistan">Afghanistan</option>
-                    <option value="Brazil">Brazil</option>
-                    <option value="China">China</option>
-                    <option value="Korea">Korea</option>
-                    <option value="Malaysia">Malaysia</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <th>City</th>
-            <td>
-                <select id="city" name="city" class="form-control" style="height:30px; width: 300px"  th:field="*{city}">
-                    <option value="Tokyo">東京</option>
-                    <option value="Sinjuku">新宿</option>
-                    <option value="Sibuya">渋谷</option>
-                    <option value="Harajuku">原宿</option>
-                    <option value="Ikebukuro">池袋</option>
-                    <option value="Akihabara">秋葉原</option>
-                    <option value="Sinagawa">品川</option>
-                    <option value="Yokohama">横浜</option>
-                    <option value="Nagoya">名古屋</option>
-                    <option value="Umeda">梅田</option>
-                    <option value="Namba">難波</option>
-                    <option value="Koube">神戸</option>
-                    <option value="Kyoto">京都</option>
-                    <option value="Okinawa">沖縄</option>
-                    <option value="Hokkaido">北海道</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <th>Picture</th>
-            <td>
-                <div class="input-group">
-                    <label class="input-group-btn">
-                        <div class="btn btn-primary">
-                            Choose File
-                            <input type="file" style="display:none"/>
-                        </div>
-                    </label>
-                    <!-- <input type="text" /> -->
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <th>Self introduction</th>
-            <td>
-                <div style="height:150px; width: 800px">
-                    <input type="text"  class="form-control" style="height:145px; width: 700px" th:field="*{selfIntroduction}"/>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <th>What you can help</th>
-            <td>
-                <select id="singleSelect" name="selectedItem" class="form-control" style="height:30px; width: 300px"  th:field="*{tags}">
-                    <option th:each="tags : ${tags}" th:value="${tags.tagId}" th:text="${tags.name}" th:selected="${tags.name} == *{tags}" >singleSelect</option>
-                </select>
-            </td>
-        </tr>
-    </table>
+                </td>
+            </tr>
+            <tr>
+                <th>Picture</th>
+                <td>
+                    <div class="input-group">
+                        <label class="input-group-btn">
+                            <div class="btn btn-primary">
+                                Choose File
+                                <input type="file" style="display:none"/>
+                            </div>
+                        </label>
+                        <!-- <input type="text" /> -->
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Self introduction</th>
+                <td>
+                    <div style="height:150px; width: 800px">
+                        <input type="text" placeholder="About you" class="form-control" style="height:145px; width: 700px" th:field="*{selfIntroduction}"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>What you can help</th>
+                <td>
+                    <select id="singleSelect" name="selectedItem" class="form-control" style="height:30px; width: 300px"  th:field="*{tags}">
+                        <option th:each="tags : ${tags}" th:value="${tags.tagId}" th:text="${tags.name}" th:selected="${tags.name} == *{tags}" >singleSelect</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
 
-    <input type="text" hidden th:field="*{latitude}">
-    <input type="text" hidden th:field="*{longitude}">
+        <input type="text" hidden th:field="*{latitude}">
+        <input type="text" hidden th:field="*{longitude}">
 
-    <button type="submit" class="btn btn-success">Sign up</button>
+        <div class="text-center">
+            <button type="submit" class="btn btn-success btn-lg btn-block">Sign up</button>
+        </div>
 
-</form>
-<button class="btn btn-secondary" onclick="link_user()">Cancel</button>
+    </form>
+
+    <div class="text-center">
+        <button class="btn btn-secondary btn-lg btn-block" onclick="link_user()">Cancel</button>
+    </div>
+
+</div>
+
 <!--<div th:replace="/fragments/base :: footer"></div>-->
 <div th:replace="/fragments/base :: script-import"></div>
 </body>

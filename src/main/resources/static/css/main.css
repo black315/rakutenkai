@@ -1,7 +1,26 @@
 body {
     font-family: 'Noto Sans', sans-serif;
-    //background: #ebf2fa;
-    //background: linear-gradient(to right, #dbf1ff, #e8f6ff);
+    //background: rgb(255,255,255);
+    //background: linear-gradient(0deg, rgba(255,255,255,0.3603816526610645) 0%, rgba(233,233,233,0.788953081232493) 100%);
+}
+
+
+
+.main-content {
+    max-width: 80%;
+    margin: auto;
+    //background
+    //padding: 10px;
+}
+
+.login-container {
+    max-width: 40%;
+    margin: auto;
+}
+
+.search-container {
+    max-width: 80%;
+    margin: auto;
 }
 
 #overview {
@@ -10,6 +29,11 @@ body {
 
 .section-title {
     color: #2ddf5c;
+}
+
+h1 {
+    //color: white;
+    font-family: 'Anton', sans-serif;
 }
 
 #overview h1 {

@@ -7,7 +7,8 @@
     function link_detail() {
 	location.href = "/user";
   }
-  </script>
+
+</script>
 <head th:replace="/fragments/base :: head">
 </head>
 
@@ -16,35 +17,43 @@
 <div th:replace="/fragments/base :: navbar">
 </div>
 
-<h1>
-    Sign up your profile
+<h1 class="text-center">
+    Log-in
 </h1>
 
-<form th:action="@{/user}" th:object="${user}" method="post">
-    <table class="table table-bordered table-hover">
-        <tr>
-            <th>Username</th>
-            <td>
-                <div>
-                    <input type="text" name="username" th:field="*{username}"/>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <th>Password</th>
-            <td>
-                <div>
-                    <input type="password" name="password"/>
-                </div>
-            </td>
-        </tr>
-    </table>
-<!--    <button type="submit" class="btn btn-primary" onclick="link_detail()">Sign in</button>-->
-    <button class="btn btn-primary" type="submit">Sign in</button>
-    <button>Cancel</button>
-</form>
+<div class="login-container">
 
-<button class="btn btn-second" onclick="link_register()">Sign up</button>
+    <form th:action="@{/user}" th:object="${user}" method="post">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>Username</th>
+                <td>
+                    <div>
+                        <input type="text" placeholder="Username" class="form-control" style="height:30px; width: 300px" name="username" th:field="*{username}"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>
+                    <div>
+                        <input type="password" placeholder="Password" class="form-control" style="height:30px; width: 300px" name="password"/>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <!--    <button type="submit" class="btn btn-primary" onclick="link_detail()">Sign in</button>-->
+        <div class="text-center">
+            <button class="btn btn-primary" type="submit">Sign in</button>
+            <button class="btn btn-secondary">Cancel</button>
+        </div>
+    </form>
+
+    <div class="text-center">
+        <br>
+        <button class="btn btn-success" onclick="link_register()">Sign up</button>
+    </div>
+</div>
 
 <!--<div th:replace="/fragments/base :: footer"></div>-->
 <div th:replace="/fragments/base :: script-import"></div>
