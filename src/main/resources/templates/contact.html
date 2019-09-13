@@ -29,7 +29,7 @@
           <div class="incoming_msg">
             <td>
               <div class="incoming_msg_img">
-              <img class="img-responsive" th:src="${'https://i.pravatar.cc/150/img=' + message.user.id}">
+              <img class="img-responsive" th:src="${'https://i.pravatar.cc/150?img=' + message.user.id}">
               </div>
               <div class="received_msg">
                 <div class="received_withd_msg">
@@ -54,8 +54,6 @@
     </div>
   </form>
 </div>
-
-<div th:replace="/fragments/base :: footer"></div>
 
 <div th:replace="/fragments/base :: script-import"></div>
 
