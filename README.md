@@ -1,3 +1,3 @@
 # Rakuten-kai
 
-Project of team A ralitenkai
+Project of team A rakutenkai
